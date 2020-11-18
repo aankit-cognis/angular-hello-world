@@ -1,0 +1,20 @@
+<div class="row" *ngIf="products && products.length">
+  <div class="col-md-4 mt-5" *ngFor="let product of products; let i= index">
+    <div class="card">
+      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{product.productName + i}}
+        </h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">Released On : {{product.releaseDate}}</p>
+        <p class="card-text">MRP : {{product.price}}</p>
+        <a href="#" class="btn btn-primary mr-2">Details</a>
+        <a href="#" class="btn btn-success" *ngIf="product.isActive">Buy</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="!products || !products.length">
+  <strong>OOPS !! We do not have any products.</strong>
+</div>
