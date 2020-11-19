@@ -13,7 +13,7 @@ export class ProductComponent {
   products: IProduct[] = [
     {
       productName: "Hero Honda CD 100",
-      description: "Most popular Bike of India",
+      description: null,
       releaseDate: "10-08-1990",
       price: 100,
       isActive: false,
