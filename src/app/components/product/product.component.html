@@ -22,12 +22,12 @@
       <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" alt="Card image cap"
         [title]="product.productName" [style.padding.px]="'10'">
       <div class="card-body">
-        <h5 class="card-title">{{product.productName + i}}
+        <h5 class="card-title">{{product.productName | uppercase}}
         </h5>
         <p class="card-text">{{product.description}}</p>
-        <p class="card-text">Released On : {{product.releaseDate}}</p>
+        <p class="card-text">Released On : {{product.releaseDate | date : 'fullDate'}}</p>
         <p class="card-text" [ngStyle]="getPriceStyles(product)">Price :
-          {{product.price}}</p>
+          {{product.price | currency :'INR' : 'Rs ' : '2.2-2' }}</p>
         <a href="#" class="btn btn-primary mr-2">Details</a>
         <button href="#" class="btn btn-success" [disabled]="product.isActive">Buy</button>
       </div>
@@ -40,3 +40,5 @@
     <strong>OOPS !! We do not have any products.</strong>
   </div>
 </ng-template>
+
+{{products | json}}
