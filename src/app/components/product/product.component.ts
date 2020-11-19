@@ -18,7 +18,7 @@ export class ProductComponent {
       price: 100,
       isActive: false,
       imageUrl: "https://via.placeholder.com/250?text=CD100 SS",
-    }
+    },
     {
       productName: "Honda Hornet",
       description: "A sports Bike",
