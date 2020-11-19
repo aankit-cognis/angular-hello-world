@@ -1,15 +1,27 @@
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" class="btn btn-primary  float-right"
+      (click)="toggleImage()">{{showImages ? "Hide Images" :"Show Images"}}</button>
+  </div>
+</div>
+
+
 <div class="row" *ngIf="products && products.length; else noProducts">
   <div class="col-md-4 mt-5" *ngFor="let product of products; let i= index">
     <div class="card">
-      <img class="card-img-top" src="https://via.placeholder.com/250" alt="Card image cap">
+      <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" alt="Card image cap"
+        [title]="product.productName" [style.padding.px]="'10'">
       <div class="card-body">
         <h5 class="card-title">{{product.productName + i}}
         </h5>
         <p class="card-text">{{product.description}}</p>
         <p class="card-text">Released On : {{product.releaseDate}}</p>
-        <p class="card-text">MRP : {{product.price}}</p>
+
+        <p class="card-text">More than 200</p>
+
+
         <a href="#" class="btn btn-primary mr-2">Details</a>
-        <a href="#" class="btn btn-success" *ngIf="product.isActive">Buy</a>
+        <button href="#" class="btn btn-success" [disabled]="product.isActive">Buy</button>
       </div>
     </div>
   </div>
