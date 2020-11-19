@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { IProduct } from "src/app/models/product.interface";
 
 @Component({
   selector: "app-product",
@@ -9,7 +10,7 @@ export class ProductComponent {
   showImages: boolean = true;
   searchText: string = "";
 
-  products: any[] = [
+  products: IProduct[] = [
     {
       productName: "Hero Honda CD 100",
       description: "Most popular Bike of India",
@@ -17,7 +18,7 @@ export class ProductComponent {
       price: 100,
       isActive: false,
       imageUrl: "https://via.placeholder.com/250?text=CD100 SS",
-    },
+    }
     {
       productName: "Honda Hornet",
       description: "A sports Bike",
@@ -53,7 +54,7 @@ export class ProductComponent {
   filterData() {
     console.log(this.searchText);
     this.products = this.actualProducts.filter((filter) =>
-      filter.productName.includes(this.searchText)
+      filter.productName.toLowerCase().includes(this.searchText.toLowerCase())
     );
   }
 }
