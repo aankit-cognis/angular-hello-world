@@ -1,11 +1,11 @@
 <h2>{{pageTitle}}</h2>
 
-<div class="row">
-  <div class="col-md-3">
+<div class="row" *ngIf="products && products.length; else noBikes">
+  <div class="col-md-4 mt-3" *ngFor="let product of products; let i = index;">
     <div class="card text-left">
       <img class="card-img-top" src="{{product.imageUrl}}" alt="">
       <div class="card-body">
-        <h4 class="card-title">{{product.productName}}</h4>
+        <h4 class="card-title">{{i+1}}. {{product.productName}}</h4>
         <p class="card-text">{{product.description}}</p>
         <p class="card-text">Price : {{product.price}}</p>
 
@@ -15,3 +15,9 @@
     </div>
   </div>
 </div>
+
+<ng-template #noBikes>
+  <div class="alert alert-warning" role="alert">
+    <strong>OOps No Bikes are available</strong>
+  </div>
+</ng-template>
