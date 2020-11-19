@@ -53,4 +53,37 @@ export class ProductListComponent {
   toggleImages(): void {
     this.showImages = !this.showImages;
   }
+  getClasses(product: IProduct) {
+    // 'classname'
+
+    // 'class1 class2'
+
+    // ['class1', 'class2', 'class3']
+
+    // {
+    //     'classname1':expression1 ,
+    //     'classname2':expression2 ,
+    // }
+
+    const is200 = product.price === 200;
+    if (is200) {
+      return {
+        "my-reen": is200,
+        bold: is200,
+      };
+    } else {
+      return {};
+    }
+  }
+
+  getStyles(product: IProduct) {
+    if (product.price == 200) {
+      return {
+        color: "red",
+        "font-weight": "bold",
+      };
+    } else {
+      return {};
+    }
+  }
 }
