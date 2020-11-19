@@ -7,6 +7,8 @@ import { Component, OnInit } from "@angular/core";
 export class ProductComponent {
   constructor() {}
   showImages: boolean = true;
+  searchText: string = "";
+
   products: any[] = [
     {
       productName: "Hero Honda CD 100",
@@ -41,9 +43,17 @@ export class ProductComponent {
       imageUrl: "https://via.placeholder.com/250?text=Rx100",
     },
   ];
+  actualProducts: any[] = [...this.products];
 
   toggleImage(): void {
     this.showImages = !this.showImages;
     console.log("Button Clicked !", this.showImages);
+  }
+
+  filterData() {
+    console.log(this.searchText);
+    this.products = this.actualProducts.filter((filter) =>
+      filter.productName.includes(this.searchText)
+    );
   }
 }
