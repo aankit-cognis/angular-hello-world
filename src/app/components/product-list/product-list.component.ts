@@ -8,6 +8,7 @@ import { IProduct } from "src/app/models/product.interface";
 export class ProductListComponent {
   constructor() {}
 
+  showImages: boolean = false;
   pageTitle: string = "Bike List";
   products: IProduct[] = [
     {
@@ -15,7 +16,7 @@ export class ProductListComponent {
       description: "Most popular Bike of India",
       releaseDate: "10-08-1990",
       price: 100,
-      isActive: false,
+      isActive: true,
       imageUrl: "https://via.placeholder.com/150?text=CD100SS",
     },
     {
@@ -47,5 +48,9 @@ export class ProductListComponent {
 
   getTitle(): string {
     return "Hello from Method";
+  }
+
+  toggleImages(): void {
+    this.showImages = !this.showImages;
   }
 }
