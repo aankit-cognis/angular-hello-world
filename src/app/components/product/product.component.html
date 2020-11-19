@@ -26,10 +26,8 @@
         </h5>
         <p class="card-text">{{product.description}}</p>
         <p class="card-text">Released On : {{product.releaseDate}}</p>
-
-        <p class="card-text">More than 200</p>
-
-
+        <p class="card-text" [ngStyle]="getPriceStyles(product)">Price :
+          {{product.price}}</p>
         <a href="#" class="btn btn-primary mr-2">Details</a>
         <button href="#" class="btn btn-success" [disabled]="product.isActive">Buy</button>
       </div>

@@ -57,4 +57,22 @@ export class ProductComponent {
       filter.productName.toLowerCase().includes(this.searchText.toLowerCase())
     );
   }
+  getPriceClasses(product: IProduct) {
+    const is200 = product.price === 200;
+    return {
+      green: is200,
+      bold: is200,
+    };
+  }
+  getPriceStyles(product: IProduct) {
+    const is200 = product.price === 200;
+    if (is200) {
+      return {
+        color: is200 ? "red" : "",
+        fontWeight: is200 ? "bold" : "normal",
+      };
+    } else {
+      return {};
+    }
+  }
 }
