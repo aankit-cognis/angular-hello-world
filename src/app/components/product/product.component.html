@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-3">
     <div class="form-group">
-      <input type="text" class="form-control" [(ngModel)]="searchText" (input)="filterData()" placeholder="Search Text">
+      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search Text">
     </div>
 
   </div>
@@ -16,6 +16,7 @@
     </div>
   </div>
   <div class="col-md-6">
+    <button type="button" class="btn btn-primary" (click)="changeName()">Change Name</button>
     <button type="button" class="btn btn-primary  float-right"
       (click)="toggleImage()">{{showImages ? "Hide Images" :"Show Images"}}</button>
   </div>
@@ -27,7 +28,7 @@
 </div>
 
 <div class="row" *ngIf="products && products.length; else noProducts">
-  <div class="col-md-4 mt-5" *ngFor="let product of products; let i= index">
+  <div class="col-md-4 mt-5" *ngFor="let product of products | filterProduct : searchText; let i= index">
     <div class="card">
       <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" alt="Card image cap"
         [title]="product.productName" [style.padding.px]="'10'">

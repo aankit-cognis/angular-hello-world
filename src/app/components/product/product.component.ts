@@ -115,4 +115,10 @@ export class ProductComponent {
       });
     }
   }
+
+  changeName(): void {
+    // (this.products[0] as any).bar = "Honda Civic";
+    this.products[0].productName = "Nexon";
+    console.log(this.products[0]);
+  }
 }
