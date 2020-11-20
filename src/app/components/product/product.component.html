@@ -5,7 +5,17 @@
     </div>
 
   </div>
-  <div class="col-md-9">
+  <div class="col-md-3">
+    <div class="form-group">
+      <select class="form-control" (change)="sortBikesByModel()" [(ngModel)]="selectedSort">
+        <!-- <select class="form-control" (change)="sortBikes($event)"> -->
+        <option value="">Select</option>
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6">
     <button type="button" class="btn btn-primary  float-right"
       (click)="toggleImage()">{{showImages ? "Hide Images" :"Show Images"}}</button>
   </div>
