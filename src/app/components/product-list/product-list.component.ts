@@ -1,15 +1,21 @@
+import { LowerCasePipe, UpperCasePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
+import { IfNullOrEmpty } from "src/app/pipes/if-null-or-empty.pipe";
 
 @Component({
   selector: "app-product-list",
   templateUrl: "product-list.component.html",
 })
 export class ProductListComponent {
-  constructor() {}
+  constructor(
+    private upperCasePipe: UpperCasePipe,
+    private lowerCasePipe: LowerCasePipe,
+    private isNullOrEmpty: IfNullOrEmpty
+  ) {}
 
   showImages: boolean = false;
-  pageTitle: string = "Bike List";
+  pageTitle: string = "Hello World";
   products: IProduct[] = [
     {
       productName: "Hero Honda CD 100",
@@ -29,7 +35,7 @@ export class ProductListComponent {
     },
     {
       productName: "Super splendor",
-      description: "A Bike that the nation trusts",
+      description: null,
       releaseDate: "10-08-1980",
       price: 75,
       isActive: true,
@@ -46,7 +52,7 @@ export class ProductListComponent {
     },
     {
       productName: "Bajaj Pulsar",
-      description: "Nostalgic !",
+      description: "",
       releaseDate: "10-08-1920",
       price: 9,
       isActive: false,
@@ -58,8 +64,21 @@ export class ProductListComponent {
     return "Hello from Method";
   }
 
+  // showImage(getImage('path', 'format), 'thumbnail');
+
   toggleImages(): void {
     this.showImages = !this.showImages;
+    if (this.showImages) {
+      this.pageTitle = this.isNullOrEmpty.transform(
+        this.upperCasePipe.transform(this.pageTitle),
+        "N/A"
+      );
+    } else {
+      this.pageTitle = this.isNullOrEmpty.transform(
+        this.lowerCasePipe.transform(this.pageTitle),
+        "N/A"
+      );
+    }
   }
   getClasses(product: IProduct) {
     // 'classname'

@@ -14,7 +14,7 @@
         [style.padding.px]="'5'" alt="">
       <div class="card-body">
         <h4 class="card-title">{{i+1}}. {{product.productName | uppercase}}</h4>
-        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">Description : {{product.description | nullOrEmpty :  'Not Available' | uppercase}}</p>
         <p class="card-text" [ngStyle]="getStyles (product)">Price :
           {{product.price | currency : 'INR':'Rs ' : '3.2-2' }}</p>
         <p class="card-text">Released On : {{product.releaseDate | date : 'fullDate'}}</p>
