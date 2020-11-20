@@ -1,3 +1,4 @@
+import { UpperCasePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
 
@@ -6,7 +7,7 @@ import { IProduct } from "src/app/models/product.interface";
   templateUrl: "product.component.html",
 })
 export class ProductComponent {
-  constructor() {}
+  constructor(private upperCase: UpperCasePipe) {}
   showImages: boolean = true;
   searchText: string = "";
 
@@ -52,7 +53,7 @@ export class ProductComponent {
   }
 
   filterData() {
-    console.log(this.searchText);
+    console.log(this.upperCase.transform(this.searchText));
     this.products = this.actualProducts.filter((filter) =>
       filter.productName.toLowerCase().includes(this.searchText.toLowerCase())
     );
