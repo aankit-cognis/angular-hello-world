@@ -7,6 +7,7 @@ import { IfNullOrEmptyPipe } from "./pipes/if-null-or-empty.pipe";
 import { UpperCasePipe } from "@angular/common";
 import { FilterProductPipe } from "./pipes/filter-product.pipe";
 import { ProcuctComponent } from "./components/procuct/procuct.component";
+import { CustomComponent } from "./components/custom/custom.component";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ProcuctComponent } from "./components/procuct/procuct.component";
     IfNullOrEmptyPipe,
     FilterProductPipe,
     ProcuctComponent,
+    CustomComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [UpperCasePipe],

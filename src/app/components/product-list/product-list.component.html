@@ -41,4 +41,19 @@
   </div>
 </ng-template>
 
-{{products | json}}
+{{products | json}}]
+
+
+<hr />
+<h3>Life Cycle Hooks</h3>
+<button type="button" class="btn btn-primary" (click)="addANewBile()">Add A Product</button>
+<button type="button" class="btn btn-danger mr-2" (click)="addANewBile()"
+  (click)="isDestroy =!isDestroy">Destroy</button>
+<app-custom [products]="newCustomProducts" [searchTerm]="searchText" *ngIf="!isDestroy"></app-custom>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />

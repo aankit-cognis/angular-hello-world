@@ -58,11 +58,9 @@ export class ProductListComponent {
 
   toggleImage(): void {
     this.showImages = !this.showImages;
-    console.log("Button Clicked !", this.showImages);
   }
 
   filterData() {
-    console.log(this.upperCase.transform(this.searchText));
     this.products = this.actualProducts.filter((filter) =>
       filter.productName.toLowerCase().includes(this.searchText.toLowerCase())
     );
@@ -91,8 +89,6 @@ export class ProductListComponent {
     }
   }
   sortBikesByModel() {
-    console.log(this.selectedSort);
-
     if (this.selectedSort === "name") {
       this.products = this.products.sort((a: IProduct, b: IProduct) => {
         if (a.productName > b.productName) return 1;
@@ -109,10 +105,8 @@ export class ProductListComponent {
   changeName(): void {
     // (this.products[0] as any).bar = "Honda Civic";
     this.products[0].productName = "Nexon";
-    console.log(this.products[0]);
   }
   onProductDeleted(productName: string) {
-    console.log("Bike deleted (from ProductListComponent)", productName);
     this.products.splice(
       this.products.findIndex((item) => item.productName === productName),
       1
@@ -121,5 +115,37 @@ export class ProductListComponent {
       this.actualProducts.findIndex((item) => item.productName === productName),
       1
     );
+  }
+
+  newCustomProducts: IProduct[] = [
+    {
+      productName: "A New Bike 1",
+      description: "Desc of a new bike",
+      releaseDate: "10-08-2010",
+      price: 200,
+      isActive: true,
+      imageUrl: "https://via.placeholder.com/250?text=Hornet",
+    },
+    {
+      productName: "A New Bike 1",
+      description: "Desc of a new bike",
+      releaseDate: "10-08-2010",
+      price: 200,
+      isActive: true,
+      imageUrl: "https://via.placeholder.com/250?text=Hornet",
+    },
+  ];
+
+  isDestroy: boolean = false;
+  addANewBile() {
+    this.newCustomProducts.push({
+      productName: "A New Bike3",
+      description: "Desc of a new bike",
+      releaseDate: "10-08-2010",
+      price: 200,
+      isActive: true,
+      imageUrl: "https://via.placeholder.com/250?text=Hornet",
+    });
+    // this.actualProducts[0].productName = "name";
   }
 }
