@@ -16,6 +16,9 @@ export class ProductListComponent {
 
   showImages: boolean = false;
   pageTitle: string = "Hello World";
+
+  searchText: string = "";
+
   products: IProduct[] = [
     {
       productName: "Hero Honda CD 100",
