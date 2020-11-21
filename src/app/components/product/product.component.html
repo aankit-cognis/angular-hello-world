@@ -1,0 +1,15 @@
+<div class="card text-left">
+  <img class="card-img-top" *ngIf="canShowImage" [src]="productToBeRendered.imageUrl"
+    [title]="productToBeRendered.productName" [style.padding.px]="'5'" alt="">
+  <div class="card-body">
+    <h4 class="card-title">{{productToBeRendered.productName | uppercase}}</h4>
+    <p class="card-text">Description : {{productToBeRendered.description | nullOrEmpty :  'Not Available' | uppercase}}
+    </p>
+    <p class="card-text" [ngStyle]="getStyles (productToBeRendered)">Price :
+      {{productToBeRendered.price | currency : 'INR':'Rs ' : '3.2-2' }}</p>
+    <p class="card-text">Released On : {{productToBeRendered.releaseDate | date : 'fullDate'}}</p>
+
+    <button type="button" class="btn btn-primary mr-2">Details</button>
+    <button type="button" class="btn btn-success" [disabled]="!productToBeRendered.isActive">Buy Now</button>
+  </div>
+</div>
