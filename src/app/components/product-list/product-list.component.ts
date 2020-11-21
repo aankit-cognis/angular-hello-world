@@ -32,39 +32,39 @@ export class ProductListComponent implements OnInit {
       isActive: true,
       imageUrl: "https://via.placeholder.com/150?text=CD100SS",
     },
-    // {
-    //   productName: "Honda Hornet",
-    //   description: "A sports Bike",
-    //   releaseDate: "10-08-2010",
-    //   price: 200,
-    //   isActive: true,
-    //   imageUrl: "https://via.placeholder.com/150?text=Hornet",
-    // },
-    // {
-    //   productName: "Super splendor",
-    //   description: null,
-    //   releaseDate: "10-08-1980",
-    //   price: 75,
-    //   isActive: true,
+    {
+      productName: "Honda Hornet",
+      description: "A sports Bike",
+      releaseDate: "10-08-2010",
+      price: 200,
+      isActive: true,
+      imageUrl: "https://via.placeholder.com/150?text=Hornet",
+    },
+    {
+      productName: "Super splendor",
+      description: null,
+      releaseDate: "10-08-1980",
+      price: 75,
+      isActive: true,
 
-    //   imageUrl: "https://via.placeholder.com/150?text=Splendor",
-    // },
-    // {
-    //   productName: "Yamaha RX 100",
-    //   description: "Nostalgic !",
-    //   releaseDate: "10-08-1987",
-    //   price: 122,
-    //   isActive: false,
-    //   imageUrl: "https://via.placeholder.com/150?text=RX100",
-    // },
-    // {
-    //   productName: "Bajaj Pulsar",
-    //   description: "",
-    //   releaseDate: "10-08-1920",
-    //   price: 9,
-    //   isActive: false,
-    //   imageUrl: "https://via.placeholder.com/150?text=Pulsar",
-    // },
+      imageUrl: "https://via.placeholder.com/150?text=Splendor",
+    },
+    {
+      productName: "Yamaha RX 100",
+      description: "Nostalgic !",
+      releaseDate: "10-08-1987",
+      price: 122,
+      isActive: false,
+      imageUrl: "https://via.placeholder.com/150?text=RX100",
+    },
+    {
+      productName: "Bajaj Pulsar",
+      description: "",
+      releaseDate: "10-08-1920",
+      price: 9,
+      isActive: false,
+      imageUrl: "https://via.placeholder.com/150?text=Pulsar",
+    },
   ];
 
   actualBikes: IProduct[] = [...this.products];
@@ -138,5 +138,13 @@ export class ProductListComponent implements OnInit {
     } else {
       this.products = this.actualBikes;
     }
+  }
+
+  onSuccessfullyDeleted(productName: string) {
+    console.log("Inside Product List Componnet ", productName);
+    this.products.splice(
+      this.products.findIndex((item) => item.productName === productName),
+      1
+    );
   }
 }
