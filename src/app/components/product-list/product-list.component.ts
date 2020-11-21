@@ -63,6 +63,8 @@ export class ProductListComponent {
     },
   ];
 
+  actualBikes: IProduct[] = [...this.products];
+
   getTitle(): string {
     return "Hello from Method";
   }
@@ -121,4 +123,14 @@ export class ProductListComponent {
     this.products[0].productName = "Nexon";
   }
   mouseEnterEvent() {}
+
+  filterBikes() {
+    if (this.searchText) {
+      this.products = this.actualBikes.filter((x) =>
+        x.productName.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    } else {
+      this.products = this.actualBikes;
+    }
+  }
 }
