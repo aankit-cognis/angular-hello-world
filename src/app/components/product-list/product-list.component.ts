@@ -7,12 +7,16 @@ import { IfNullOrEmpty } from "src/app/pipes/if-null-or-empty.pipe";
   selector: "app-product-list",
   templateUrl: "product-list.component.html",
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   constructor(
     private upperCasePipe: UpperCasePipe,
     private lowerCasePipe: LowerCasePipe,
     private isNullOrEmpty: IfNullOrEmpty
   ) {}
+
+  ngOnInit() {
+    console.log("Inside On ngOnInit of ProductListComponent");
+  }
 
   showImages: boolean = false;
   pageTitle: string = "Hello World";
