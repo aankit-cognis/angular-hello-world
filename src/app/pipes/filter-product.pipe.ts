@@ -3,7 +3,7 @@ import { IProduct } from "../models/product.interface";
 
 @Pipe({
   name: "filterProduct",
-  pure: false,
+  pure: true,
 })
 export class FilterProductPipe implements PipeTransform {
   transform(products: IProduct[], searchTerm: string): any {

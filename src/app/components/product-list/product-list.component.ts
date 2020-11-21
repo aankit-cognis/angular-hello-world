@@ -75,17 +75,7 @@ export class ProductListComponent {
       bold: is200,
     };
   }
-  getPriceStyles(product: IProduct) {
-    const is200 = product.price === 200;
-    if (is200) {
-      return {
-        color: is200 ? "red" : "",
-        fontWeight: is200 ? "bold" : "normal",
-      };
-    } else {
-      return {};
-    }
-  }
+
   sortBikes(event): void {
     let sortValue = event.target.value;
     if (sortValue === "name") {
