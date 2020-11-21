@@ -18,7 +18,7 @@
 </div>
 <hr>
 <div class="row" *ngIf="products && products.length; else noBikes">
-  <div class="col-md-4 mt-3" *ngFor="let product of products; let i = index;">
+  <div class="col-md-4 mt-3" *ngFor="let product of products | filterPile : searchText; let i = index;">
     <div class="card text-left">
       <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" [title]="product.productName"
         [style.padding.px]="'5'" alt="">
