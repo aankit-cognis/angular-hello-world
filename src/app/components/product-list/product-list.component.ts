@@ -116,4 +116,9 @@ export class ProductListComponent {
       return {};
     }
   }
+
+  changeName() {
+    this.products[0].productName = "Nexon";
+  }
+  mouseEnterEvent() {}
 }

@@ -1,10 +1,13 @@
 <h2>{{pageTitle}}</h2>
 <hr>
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-6">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search " [(ngModel)]="searchText">
     </div>
+  </div>
+  <div class="col-md-3">
+    <button type="button" class="btn btn-info" (click)="changeName()">Change Name</button>
   </div>
   <div class="col-md-3">
     <button type="button" class="btn btn-warning float-right" (click)="toggleImages()">{{showImages ? 'Hide' : 'Show'}}
@@ -17,7 +20,7 @@
   </div>
 </div>
 <hr>
-<div class="row" *ngIf="products && products.length; else noBikes">
+<div class="row" *ngIf="products && products.length; else noBikes" (mousemove)="mouseEnterEvent()">
   <div class="col-md-4 mt-3" *ngFor="let product of products | filterPile : searchText; let i = index;">
     <div class="card text-left">
       <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" [title]="product.productName"
@@ -35,6 +38,8 @@
     </div>
   </div>
 </div>
+
+{{products | json}}
 
 <ng-template #noBikes>
   <div class="alert alert-warning" role="alert">
