@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
 
 @Component({
-  selector: "app-product",
+  selector: "app-product-list",
   templateUrl: "product-list.component.html",
 })
 export class ProductListComponent {

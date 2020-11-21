@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
   template: `
     <h2 class="text-primary">Welcome Home</h2>
     <hr />
-    <app-product></app-product>
+    <app-product-list></app-product-list>
   `,
 })
 export class HomeComponent {}
