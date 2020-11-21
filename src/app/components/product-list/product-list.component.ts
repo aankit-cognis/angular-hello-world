@@ -5,9 +5,9 @@ import { IProduct } from "src/app/models/product.interface";
 
 @Component({
   selector: "app-product",
-  templateUrl: "product.component.html",
+  templateUrl: "product-list.component.html",
 })
-export class ProductComponent {
+export class ProductListComponent {
   constructor(private upperCase: UpperCasePipe) {}
   showImages: boolean = true;
   searchText: string = "";
