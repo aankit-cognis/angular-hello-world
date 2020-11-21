@@ -111,4 +111,15 @@ export class ProductListComponent {
     this.products[0].productName = "Nexon";
     console.log(this.products[0]);
   }
+  onProductDeleted(productName: string) {
+    console.log("Bike deleted (from ProductListComponent)", productName);
+    this.products.splice(
+      this.products.findIndex((item) => item.productName === productName),
+      1
+    );
+    this.actualProducts.splice(
+      this.actualProducts.findIndex((item) => item.productName === productName),
+      1
+    );
+  }
 }
