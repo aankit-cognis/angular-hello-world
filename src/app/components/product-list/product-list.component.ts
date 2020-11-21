@@ -125,6 +125,8 @@ export class ProductListComponent {
   mouseEnterEvent() {}
 
   filterBikes() {
+    console.log("Event Triggered !");
+
     if (this.searchText) {
       this.products = this.actualBikes.filter((x) =>
         x.productName.toLowerCase().includes(this.searchText.toLowerCase())

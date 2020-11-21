@@ -3,7 +3,7 @@ import { IProduct } from "../models/product.interface";
 
 @Pipe({
   name: "filterPile",
-  pure: true,
+  pure: false,
 })
 export class FilterBikesPipe implements PipeTransform {
   private counter: number = 0;
