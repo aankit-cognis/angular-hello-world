@@ -8,6 +8,8 @@ import { UpperCasePipe } from "@angular/common";
 import { FilterProductPipe } from "./pipes/filter-product.pipe";
 import { ProcuctComponent } from "./components/procuct/procuct.component";
 import { CustomComponent } from "./components/custom/custom.component";
+import { ParentComponent } from "./components/parent.componnet";
+import { ChildComponent } from "./components/child.component";
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { CustomComponent } from "./components/custom/custom.component";
     FilterProductPipe,
     ProcuctComponent,
     CustomComponent,
+    ParentComponent,
+    ChildComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [UpperCasePipe],
