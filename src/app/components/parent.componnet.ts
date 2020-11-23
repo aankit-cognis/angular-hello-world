@@ -8,7 +8,6 @@ import {
   ViewChild,
   ViewChildren,
 } from "@angular/core";
-import { setInterval } from "timers";
 import { ChildComponent } from "./child.component";
 @Component({
   selector: "app-parent",
@@ -67,6 +66,8 @@ export class ParentComponent implements OnInit, AfterViewInit {
   }
 
   callLogMessage() {
-    this.childComp.logMessage();
+    this.childComp.toArray().forEach((child) => {
+      child.logMessage();
+    });
   }
 }
