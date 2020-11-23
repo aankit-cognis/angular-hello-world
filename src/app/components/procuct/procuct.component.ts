@@ -15,7 +15,7 @@ export class ProcuctComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log("From ngOnInit() ProcuctComponent");
+    //console.log("From ngOnInit() ProcuctComponent");
   }
 
   getPriceStyles(product: IProduct) {
@@ -31,7 +31,7 @@ export class ProcuctComponent implements OnInit {
   }
 
   deleteBike() {
-    console.log("Deleting Bike ", this.product.productName);
+    //console.log("Deleting Bike ", this.product.productName);
     //Make your http call to delete the bike.
     this.onDelete.emit(this.product.productName);
   }
