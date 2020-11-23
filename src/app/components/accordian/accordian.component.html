@@ -1,0 +1,9 @@
+<div class="card text-left">
+  <div class="card-body">
+    <h4 class="card-title cursor-pointer" (click)="isExpand= !isExpand">{{header | uppercase}}
+    </h4>
+    <ng-content *ngIf="isExpand" select=".productBody"></ng-content>
+    <hr>
+    <ng-content *ngIf="isExpand" select=".productFooter"></ng-content>
+  </div>
+</div>

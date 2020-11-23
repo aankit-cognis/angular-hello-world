@@ -20,7 +20,6 @@ export class ProductComponent implements OnInit, OnChanges {
   @Input() canShowImage: boolean;
   @Output() onProductDeleted: EventEmitter<string> = new EventEmitter<string>();
 
-  isExpand: boolean = true;
   private counter: number = 0;
 
   ngOnInit(): void {
