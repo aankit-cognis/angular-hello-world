@@ -7,3 +7,6 @@
   font-weight: bolder;
   font-size: xx-large;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
