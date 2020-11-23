@@ -2,59 +2,28 @@ import { UpperCasePipe } from "@angular/common";
 import { ElementSchemaRegistry } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
+import { ProductService } from "src/app/services/product.service";
 
 @Component({
   selector: "app-product-list",
   templateUrl: "product-list.component.html",
+  providers: [ProductService],
 })
 export class ProductListComponent {
-  constructor(private upperCase: UpperCasePipe) {}
+  constructor(
+    private upperCase: UpperCasePipe,
+    private productService: ProductService
+  ) {}
   showImages: boolean = true;
   searchText: string = "";
   selectedSort: string = "";
-  products: IProduct[] = [
-    {
-      productName: "Hero Honda CD 100",
-      description: null,
-      releaseDate: "10-08-1990",
-      price: 100,
-      isActive: false,
-      imageUrl: "https://via.placeholder.com/250?text=CD100 SS",
-    },
-    {
-      productName: "Honda Hornet",
-      description: "A sports Bike",
-      releaseDate: "10-08-2010",
-      price: 200,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/250?text=Hornet",
-    },
-    {
-      productName: "Super splendor",
-      description: "A Bike that the nation trusts",
-      releaseDate: "10-08-1980",
-      price: 75,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/250?text=Splendor",
-    },
-    {
-      productName: "Yamaha RX 100",
-      description: "Nostalgic !",
-      releaseDate: "10-08-1987",
-      price: 122,
-      isActive: false,
-      imageUrl: "https://via.placeholder.com/250?text=Rx100",
-    },
-    {
-      productName: "Bajab Pulsar 150",
-      description: "New Bike !",
-      releaseDate: "10-08-2000",
-      price: 1220,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/250?text=Pulsar",
-    },
-  ];
-  actualProducts: any[] = [...this.products];
+  products: IProduct[];
+  actualProducts: any[];
+
+  ngOnInit() {
+    this.products = this.productService.getProducts();
+    this.actualProducts = [...this.products];
+  }
 
   toggleImage(): void {
     this.showImages = !this.showImages;

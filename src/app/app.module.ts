@@ -10,6 +10,7 @@ import { ProcuctComponent } from "./components/procuct/procuct.component";
 import { CustomComponent } from "./components/custom/custom.component";
 import { ParentComponent } from "./components/parent.componnet";
 import { ChildComponent } from "./components/child.component";
+import { ProductService } from "./services/product.service";
 
 @NgModule({
   declarations: [
