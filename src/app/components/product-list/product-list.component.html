@@ -30,7 +30,9 @@
 
 <div class="row" *ngIf="products && products.length; else noProducts">
   <div class="col-md-4 mt-5" *ngFor="let product of products ; let i= index">
-    <app-procuct [product]="product" [showImages]="showImages" (onDelete)="onProductDeleted($event)"></app-procuct>
+    <app-procuct [product]="product" [showImages]="showImages" (onDelete)="onProductDeleted($event)">
+
+    </app-procuct>
 
   </div>
 </div>
@@ -41,7 +43,6 @@
   </div>
 </ng-template>
 
-{{products | json}}]
 
 
 <hr />

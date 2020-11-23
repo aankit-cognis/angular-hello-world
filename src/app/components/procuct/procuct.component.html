@@ -1,15 +1,15 @@
 <div class="card">
-  <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" alt="Card image cap"
-    [title]="product.productName" [style.padding.px]="'10'">
   <div class="card-body">
-    <h5 class="card-title">{{product.productName | uppercase}}
+    <h5 class="card-title pointer-css" (click)="isExpand=!isExpand">{{product.productName | uppercase}}
     </h5>
-    <p class="card-text">Des : {{product.description | ifNullOrEmpty : 'N/A'}}</p>
-    <p class="card-text">Released On : {{product.releaseDate | date : 'fullDate'}}</p>
-    <p class="card-text" [ngStyle]="getPriceStyles(product)">Price :
-      {{product.price | currency :'INR' : 'Rs ' : '2.2-2' }}</p>
-    <a href="#" class="btn btn-primary mr-2">Details</a>
-    <button href="#" class="btn btn-success mr-2" [disabled]="product.isActive">Buy</button>
-    <button href="#" class="btn btn-danger mr-2" [disabled]="product.isActive" (click)="deleteBike()">Delete</button>
+    <div [hidden]="!isExpand">
+      <p class="card-text">Des : {{product.description | ifNullOrEmpty : 'N/A'}}</p>
+      <p class="card-text">Released On : {{product.releaseDate | date : 'fullDate'}}</p>
+      <p class="card-text" [ngStyle]="getPriceStyles(product)">Price :
+        {{product.price | currency :'INR' : 'Rs ' : '2.2-2' }}</p>
+      <a href="#" class="btn btn-primary mr-2">Details</a>
+      <button href="#" class="btn btn-success mr-2" [disabled]="product.isActive">Buy</button>
+      <button href="#" class="btn btn-danger mr-2" [disabled]="product.isActive" (click)="deleteBike()">Delete</button>
+    </div>
   </div>
 </div>

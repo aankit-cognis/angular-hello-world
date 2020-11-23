@@ -10,8 +10,9 @@ import { IProduct } from "src/app/models/product.interface";
 export class ProcuctComponent implements OnInit {
   @Input() product: IProduct;
   @Input() showImages: boolean;
-
   @Output() onDelete: EventEmitter<string> = new EventEmitter<string>();
+
+  isExpand: boolean = true;
 
   constructor() {}
 
