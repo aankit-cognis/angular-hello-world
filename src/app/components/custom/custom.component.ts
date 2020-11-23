@@ -25,10 +25,6 @@ export class CustomComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
       products: this.products,
       counter: this.counter,
     });
-    console.log("Custom Componnet ngOnInit()", {
-      products: this.products,
-      counter: this.counter,
-    });
   }
   ngOnChanges() {
     this.counter++;
