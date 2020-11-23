@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title pointer-css" (click)="isExpand=!isExpand">{{title | uppercase}}
+    </h5>
+    <ng-content select=".accordianBody" *ngIf="isExpand"></ng-content>
+    <ng-content select=".accordianFooter" *ngIf="isExpand"></ng-content>
+  </div>
+</div>

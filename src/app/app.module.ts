@@ -11,6 +11,7 @@ import { CustomComponent } from "./components/custom/custom.component";
 import { ParentComponent } from "./components/parent.componnet";
 import { ChildComponent } from "./components/child.component";
 import { ProductService } from "./services/product.service";
+import { AccordianComponent } from "./components/accordian/accordian.component";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductService } from "./services/product.service";
     CustomComponent,
     ParentComponent,
     ChildComponent,
+    AccordianComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [UpperCasePipe],

@@ -12,8 +12,6 @@ export class ProcuctComponent implements OnInit {
   @Input() showImages: boolean;
   @Output() onDelete: EventEmitter<string> = new EventEmitter<string>();
 
-  isExpand: boolean = true;
-
   constructor() {}
 
   ngOnInit() {
