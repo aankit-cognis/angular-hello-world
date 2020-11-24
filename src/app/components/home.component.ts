@@ -4,10 +4,8 @@ import { Component } from "@angular/core";
   selector: "app-home",
   template: `
     <ng-http-loader></ng-http-loader>
-    <h2 class="text-primary">Welcome Home</h2>
-    <hr />
-    <app-product-list></app-product-list>
-    <!-- <app-parent> </app-parent> -->
+    <h2 class="text-primary">Product Management APP</h2>
+    <router-outlet> </router-outlet>
   `,
 })
 export class HomeComponent {}

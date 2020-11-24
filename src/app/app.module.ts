@@ -15,6 +15,10 @@ import { ProductService } from "./services/product.service";
 import { AccordianComponent } from "./components/accordian/accordian.component";
 import { UtilityService } from "./services/utility.service";
 import { NgHttpLoaderModule } from "ng-http-loader";
+import { ProductDetailsComponent } from "./components/product-details/product-details.component";
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
+import { WelcomeComponent } from "./components/welcome/welcome.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -27,12 +31,38 @@ import { NgHttpLoaderModule } from "ng-http-loader";
     ParentComponent,
     ChildComponent,
     AccordianComponent,
+    ProductDetailsComponent,
+    PageNotFoundComponent,
+    WelcomeComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
+    RouterModule.forRoot([
+      {
+        path: "products",
+        component: ProductListComponent,
+      },
+      {
+        path: "products/:id",
+        component: ProductDetailsComponent,
+      },
+      {
+        path: "welcome",
+        component: WelcomeComponent,
+      },
+      {
+        path: "",
+        redirectTo: "welcome",
+        pathMatch: "full",
+      },
+      {
+        path: "**",
+        component: PageNotFoundComponent,
+      },
+    ]),
   ],
   providers: [UpperCasePipe, ProductService, UtilityService],
   bootstrap: [HomeComponent],
