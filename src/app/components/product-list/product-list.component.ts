@@ -9,15 +9,12 @@ import { ProductService } from "src/app/services/product.service";
   templateUrl: "product-list.component.html",
 })
 export class ProductListComponent implements OnInit {
-  productService: ProductService;
-
   constructor(
     private upperCasePipe: UpperCasePipe,
     private lowerCasePipe: LowerCasePipe,
-    private isNullOrEmpty: IfNullOrEmpty
-  ) {
-    this.productService = ProductService.GetInstance();
-  }
+    private isNullOrEmpty: IfNullOrEmpty,
+    private productService: ProductService
+  ) {}
 
   ngOnInit() {
     console.log("Inside On ngOnInit of ProductListComponent");

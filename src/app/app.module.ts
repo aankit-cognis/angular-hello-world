@@ -10,6 +10,7 @@ import { FilterBikesPipe } from "./pipes/filter-bikes.pipe";
 import { ChildComponent } from "./components/child/child.component";
 import { AccordianComponent } from "./components/accordian/accordian.component";
 import { NewListComponentComponent } from "./components/new-list-component/new-list-component.component";
+import { ProductService } from "./services/product.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { NewListComponentComponent } from "./components/new-list-component/new-l
     NewListComponentComponent,
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [UpperCasePipe, LowerCasePipe, IfNullOrEmpty],
+  providers: [UpperCasePipe, LowerCasePipe, IfNullOrEmpty, ProductService],
   bootstrap: [HomeComponent],
 })
 export class AppModule {}

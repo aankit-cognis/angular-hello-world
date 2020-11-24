@@ -1,12 +1,11 @@
 // import { Injectable } from "@angular/core";
 
+import { Injectable } from "@angular/core";
 import { IProduct } from "../models/product.interface";
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable()
 export class ProductService {
-  private static _instance: ProductService;
+  // private static _instance: ProductService;
   private originalProducts: IProduct[] = [
     {
       productName: "Hero Honda CD 100",
@@ -52,7 +51,7 @@ export class ProductService {
   ];
 
   lastDeletedProduct: string;
-  private constructor() {}
+  constructor() {}
 
   getProducts(): IProduct[] {
     console.log("Inside GETPRODUCTS ", this.originalProducts);
@@ -68,12 +67,12 @@ export class ProductService {
     );
   }
 
-  public static GetInstance() {
-    if (this._instance) {
-      return this._instance;
-    } else {
-      this._instance = new ProductService();
-      return this._instance;
-    }
-  }
+  // public static GetInstance() {
+  //   if (this._instance) {
+  //     return this._instance;
+  //   } else {
+  //     this._instance = new ProductService();
+  //     return this._instance;
+  //   }
+  // }
 }

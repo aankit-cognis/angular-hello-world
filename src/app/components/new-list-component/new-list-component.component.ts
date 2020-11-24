@@ -8,12 +8,9 @@ import { ProductService } from "src/app/services/product.service";
   styleUrls: ["./new-list-component.component.scss"],
 })
 export class NewListComponentComponent implements OnInit {
-  private productService: ProductService;
   newProducts: IProduct[];
   recentlyDeleted: string;
-  constructor() {
-    this.productService = ProductService.GetInstance();
-  }
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
     this.reloadData();
