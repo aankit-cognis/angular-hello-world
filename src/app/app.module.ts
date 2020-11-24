@@ -13,6 +13,7 @@ import { NewListComponentComponent } from "./components/new-list-component/new-l
 import { ProductService } from "./services/product.service";
 import { UtilityService } from "./services/utility.service";
 import { HttpClientModule } from "@angular/common/http";
+import { NgHttpLoaderModule } from "ng-http-loader";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,12 @@ import { HttpClientModule } from "@angular/common/http";
     AccordianComponent,
     NewListComponentComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
+  ],
   providers: [
     UpperCasePipe,
     LowerCasePipe,

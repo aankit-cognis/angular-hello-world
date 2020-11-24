@@ -13,7 +13,8 @@ import { ChildComponent } from "./child/child.component";
 
 @Component({
   selector: "app-home",
-  template: ` <h2 class="text-primary">Hello From Home</h2>
+  template: ` <ng-http-loader></ng-http-loader>
+    <h2 class="text-primary">Hello From Home</h2>
     <app-product-list></app-product-list>`,
 })
 export class HomeComponent implements OnInit {
