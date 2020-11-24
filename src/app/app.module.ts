@@ -1,4 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { HomeComponent } from "./components/home.component";
 import { ProductListComponent } from "./components/product-list/product-list.component";
@@ -12,7 +13,6 @@ import { ParentComponent } from "./components/parent.componnet";
 import { ChildComponent } from "./components/child.component";
 import { ProductService } from "./services/product.service";
 import { AccordianComponent } from "./components/accordian/accordian.component";
-import { NewListComponent } from "./components/new-list/new-list.component";
 
 @NgModule({
   declarations: [
@@ -25,9 +25,8 @@ import { NewListComponent } from "./components/new-list/new-list.component";
     ParentComponent,
     ChildComponent,
     AccordianComponent,
-    NewListComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [UpperCasePipe, ProductService],
   bootstrap: [HomeComponent],
 })

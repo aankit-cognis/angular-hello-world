@@ -7,8 +7,12 @@
   </div>
   <hr />
   <div class="accordianFooter">
-    <a href="#" class="btn btn-primary mr-2" #detailsButton>Details</a>
-    <button href="#" class="btn btn-success mr-2" [disabled]="product.isActive">Buy</button>
-    <button href="#" class="btn btn-danger mr-2" [disabled]="product.isActive" (click)="deleteBike()">Delete</button>
+    <a href="#" class="btn btn-primary mr-1 btn-sm" #detailsButton>Details</a>
+    <button href="#" class="btn btn-success mr-1 btn-sm" [disabled]="product.isActive">Buy</button>
+    <button href="#" class="btn btn-danger mr-1 btn-sm" (click)="deleteBike()">Delete</button>
+    <button href="#" class="btn btn-info mr-1 btn-sm" (click)="changeStatus(product.productId,'deactivate')"
+      *ngIf="product.isActive">Deactivate</button>
+    <button href="#" class="btn btn-info mr-1 btn-sm" (click)="changeStatus(product.productId,'reactivate')"
+      *ngIf="!product.isActive">Activate</button>
   </div>
 </app-accordian>

@@ -1,5 +1,4 @@
 import { UpperCasePipe } from "@angular/common";
-import { ElementSchemaRegistry } from "@angular/compiler";
 import { Component, OnInit } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
 import { ProductService } from "src/app/services/product.service";
@@ -20,10 +19,20 @@ export class ProductListComponent {
   actualProducts: any[];
 
   ngOnInit() {
-    this.products = this.productService.getProducts();
-    this.actualProducts = [...this.products];
+    this.loadInitialData();
   }
-
+  private loadInitialData() {
+    this.productService.getProducts().subscribe(
+      (data: IProduct[]) => {
+        console.log(data);
+        this.products = data;
+        this.actualProducts = [...this.products];
+      },
+      (error) => {
+        console.log("ERROR -", error);
+      }
+    );
+  }
   toggleImage(): void {
     this.showImages = !this.showImages;
   }
@@ -76,7 +85,10 @@ export class ProductListComponent {
   }
   onProductDeleted(productName: string) {
     this.productService.deleteProduct(productName);
-    this.products = this.productService.getProducts();
-    this.actualProducts = [...this.products];
+  }
+
+  onStatusChanged(event) {
+    console.log("Status Of Product Changed !", event);
+    this.loadInitialData();
   }
 }
