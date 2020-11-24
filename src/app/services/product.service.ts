@@ -29,7 +29,7 @@ export class ProductService {
       );
     }
   }
-  deleteProduct(productName: string): void {
-    this.lastDeletedProduct = productName;
+  deleteProduct(id: number): Observable<IProduct> {
+    return this.http.delete<IProduct>(`${this._baseUrl}/open/products/${id}`);
   }
 }

@@ -84,7 +84,8 @@ export class ProductListComponent {
     this.products[0].productName = "Nexon";
   }
   onProductDeleted(productName: string) {
-    this.productService.deleteProduct(productName);
+    console.log("Product Deleted !", event);
+    this.loadInitialData();
   }
 
   onStatusChanged(event) {

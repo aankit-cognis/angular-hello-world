@@ -51,9 +51,18 @@ export class ProcuctComponent implements OnInit {
       }
     );
   }
-  deleteBike() {
-    //console.log("Deleting Bike ", this.product.productName);
-    //Make your http call to delete the bike.
-    this.onDelete.emit(this.product.productName);
+  deleteBike(id: number) {
+    this.productService.deleteProduct(id).subscribe(
+      (data: IProduct) => {
+        console.log("Deleted", data);
+        this.utilityService.showError(
+          `${data.productName} is deleted successfully`
+        );
+        this.onDelete.emit(data.productName);
+      },
+      (error) => {
+        console.log("ERROR -", error);
+      }
+    );
   }
 }
