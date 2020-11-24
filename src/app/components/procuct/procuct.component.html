@@ -7,7 +7,8 @@
   </div>
   <hr />
   <div class="accordianFooter">
-    <a href="#" class="btn btn-primary mr-1 btn-sm" #detailsButton>Details</a>
+    <button href="#" class="btn btn-primary mr-1 btn-sm" #detailsButton [routerLink]="['/products',product.productId]"
+      routerLinkActive="router-link-active">Details</button>
     <button href="#" class="btn btn-success mr-1 btn-sm" [disabled]="product.isActive">Buy</button>
     <button href="#" class="btn btn-danger mr-1 btn-sm" (click)="deleteBike(product.productId)">Delete</button>
     <button href="#" class="btn btn-info mr-1 btn-sm" (click)="changeStatus(product.productId,'deactivate')"

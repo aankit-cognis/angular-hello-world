@@ -4,6 +4,7 @@ export interface IProduct {
   description: string;
   releaseDate: string;
   price: number;
+  rating: number;
   isActive: boolean;
   imageUrl: string;
   createdDate: string;
