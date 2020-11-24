@@ -2,6 +2,7 @@
 
 import { Injectable } from "@angular/core";
 import { IProduct } from "../models/product.interface";
+import { UtilityService } from "./utility.service";
 
 @Injectable()
 export class ProductService {
@@ -51,7 +52,7 @@ export class ProductService {
   ];
 
   lastDeletedProduct: string;
-  constructor() {}
+  constructor(private utilityService: UtilityService) {}
 
   getProducts(): IProduct[] {
     console.log("Inside GETPRODUCTS ", this.originalProducts);
@@ -65,14 +66,6 @@ export class ProductService {
       this.originalProducts.findIndex((item) => item.productName === bikename),
       1
     );
+    this.utilityService.showError(`${bikename} is deleted!`);
   }
-
-  // public static GetInstance() {
-  //   if (this._instance) {
-  //     return this._instance;
-  //   } else {
-  //     this._instance = new ProductService();
-  //     return this._instance;
-  //   }
-  // }
 }
