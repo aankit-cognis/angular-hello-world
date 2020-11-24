@@ -20,7 +20,7 @@ export class AccordianComponent implements OnInit, AfterViewInit {
   @Input() title: string;
   constructor() {}
   ngAfterViewInit(): void {
-    console.log("Inside afterViewInit AccordianComponent", this.detailsButton);
+    // console.log("Inside afterViewInit AccordianComponent", this.detailsButton);
   }
 
   ngOnInit() {}

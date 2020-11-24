@@ -7,7 +7,6 @@ import { ProductService } from "src/app/services/product.service";
 @Component({
   selector: "app-product-list",
   templateUrl: "product-list.component.html",
-  providers: [ProductService],
 })
 export class ProductListComponent {
   constructor(
@@ -76,45 +75,8 @@ export class ProductListComponent {
     this.products[0].productName = "Nexon";
   }
   onProductDeleted(productName: string) {
-    this.products.splice(
-      this.products.findIndex((item) => item.productName === productName),
-      1
-    );
-    this.actualProducts.splice(
-      this.actualProducts.findIndex((item) => item.productName === productName),
-      1
-    );
-  }
-
-  newCustomProducts: IProduct[] = [
-    {
-      productName: "A New Bike 1",
-      description: "Desc of a new bike",
-      releaseDate: "10-08-2010",
-      price: 200,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/250?text=Hornet",
-    },
-    {
-      productName: "A New Bike 1",
-      description: "Desc of a new bike",
-      releaseDate: "10-08-2010",
-      price: 200,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/250?text=Hornet",
-    },
-  ];
-
-  isDestroy: boolean = false;
-  addANewBile() {
-    this.newCustomProducts.push({
-      productName: "A New Bike3",
-      description: "Desc of a new bike",
-      releaseDate: "10-08-2010",
-      price: 200,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/250?text=Hornet",
-    });
-    // this.actualProducts[0].productName = "name";
+    this.productService.deleteProduct(productName);
+    this.products = this.productService.getProducts();
+    this.actualProducts = [...this.products];
   }
 }
