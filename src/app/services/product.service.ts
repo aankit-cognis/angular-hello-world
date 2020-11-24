@@ -1,11 +1,12 @@
 import { Injectable } from "@angular/core";
 import { IProduct } from "../models/product.interface";
-
+import { Notyf } from "notyf";
 @Injectable({
   providedIn: "root",
 })
 export class ProductService {
   lastDeletedProduct: string = "";
+  notyf: Notyf;
   products: IProduct[] = [
     {
       productName: "Hero Honda CD 100",
@@ -48,7 +49,9 @@ export class ProductService {
       imageUrl: "https://via.placeholder.com/250?text=Pulsar",
     },
   ];
-  constructor() {}
+  constructor() {
+    this.notyf = new Notyf();
+  }
 
   getProducts(): IProduct[] {
     console.log("Inside Product Service ! Get Products Method()");
@@ -61,5 +64,6 @@ export class ProductService {
       this.products.findIndex((item) => item.productName === productName),
       1
     );
+    this.notyf.error(`${productName} deleted`);
   }
 }
