@@ -2,72 +2,34 @@ import { LowerCasePipe, UpperCasePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
 import { IfNullOrEmpty } from "src/app/pipes/if-null-or-empty.pipe";
+import { ProductService } from "src/app/services/product.service";
 
 @Component({
   selector: "app-product-list",
   templateUrl: "product-list.component.html",
 })
 export class ProductListComponent implements OnInit {
+  productService: ProductService;
+
   constructor(
     private upperCasePipe: UpperCasePipe,
     private lowerCasePipe: LowerCasePipe,
     private isNullOrEmpty: IfNullOrEmpty
-  ) {}
+  ) {
+    this.productService = new ProductService();
+  }
 
   ngOnInit() {
     console.log("Inside On ngOnInit of ProductListComponent");
+    this.products = this.productService.getProducts();
+    this.actualBikes = [...this.products];
   }
 
   showImages: boolean = false;
   pageTitle: string = "Hello World";
-
   searchText: string = "";
-
-  products: IProduct[] = [
-    {
-      productName: "Hero Honda CD 100",
-      description: "Most popular Bike of India",
-      releaseDate: "10-08-1990",
-      price: 100,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/150?text=CD100SS",
-    },
-    {
-      productName: "Honda Hornet",
-      description: "A sports Bike",
-      releaseDate: "10-08-2010",
-      price: 200,
-      isActive: true,
-      imageUrl: "https://via.placeholder.com/150?text=Hornet",
-    },
-    {
-      productName: "Super splendor",
-      description: null,
-      releaseDate: "10-08-1980",
-      price: 75,
-      isActive: true,
-
-      imageUrl: "https://via.placeholder.com/150?text=Splendor",
-    },
-    {
-      productName: "Yamaha RX 100",
-      description: "Nostalgic !",
-      releaseDate: "10-08-1987",
-      price: 122,
-      isActive: false,
-      imageUrl: "https://via.placeholder.com/150?text=RX100",
-    },
-    {
-      productName: "Bajaj Pulsar",
-      description: "",
-      releaseDate: "10-08-1920",
-      price: 9,
-      isActive: false,
-      imageUrl: "https://via.placeholder.com/150?text=Pulsar",
-    },
-  ];
-
-  actualBikes: IProduct[] = [...this.products];
+  products: IProduct[];
+  actualBikes: IProduct[];
 
   getTitle(): string {
     return "Hello from Method";
@@ -89,39 +51,6 @@ export class ProductListComponent implements OnInit {
       );
     }
   }
-  // getClasses(product: IProduct) {
-  //   // 'classname'
-
-  //   // 'class1 class2'
-
-  //   // ['class1', 'class2', 'class3']
-
-  //   // {
-  //   //     'classname1':expression1 ,
-  //   //     'classname2':expression2 ,
-  //   // }
-
-  //   const is200 = product.price === 200;
-  //   if (is200) {
-  //     return {
-  //       "my-reen": is200,
-  //       bold: is200,
-  //     };
-  //   } else {
-  //     return {};
-  //   }
-  // }
-
-  // getStyles(product: IProduct) {
-  //   if (product.price == 200) {
-  //     return {
-  //       color: "red",
-  //       "font-weight": "bold",
-  //     };
-  //   } else {
-  //     return {};
-  //   }
-  // }
 
   changeName() {
     this.products[0].productName = "Nexon";

@@ -9,6 +9,7 @@ import { FormsModule } from "@angular/forms";
 import { FilterBikesPipe } from "./pipes/filter-bikes.pipe";
 import { ChildComponent } from "./components/child/child.component";
 import { AccordianComponent } from "./components/accordian/accordian.component";
+import { NewListComponentComponent } from "./components/new-list-component/new-list-component.component";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AccordianComponent } from "./components/accordian/accordian.component";
     FilterBikesPipe,
     ChildComponent,
     AccordianComponent,
+    NewListComponentComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [UpperCasePipe, LowerCasePipe, IfNullOrEmpty],
