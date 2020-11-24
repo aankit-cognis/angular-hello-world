@@ -10,11 +10,17 @@ import { ProductService } from "src/app/services/product.service";
 export class NewListComponentComponent implements OnInit {
   private productService: ProductService;
   newProducts: IProduct[];
+  recentlyDeleted: string;
   constructor() {
-    this.productService = new ProductService();
+    this.productService = ProductService.GetInstance();
   }
 
   ngOnInit() {
-    this.newProducts = this.productService.getProducts();
+    this.reloadData();
+  }
+
+  reloadData() {
+    //this.newProducts = this.productService.getProducts();
+    this.recentlyDeleted = this.productService.lastDeletedProduct;
   }
 }

@@ -6,6 +6,7 @@ import { IProduct } from "../models/product.interface";
 //   providedIn: 'root'
 // })
 export class ProductService {
+  private static _instance: ProductService;
   private originalProducts: IProduct[] = [
     {
       productName: "Hero Honda CD 100",
@@ -50,9 +51,29 @@ export class ProductService {
     },
   ];
 
-  constructor() {}
+  lastDeletedProduct: string;
+  private constructor() {}
 
   getProducts(): IProduct[] {
+    console.log("Inside GETPRODUCTS ", this.originalProducts);
+
     return this.originalProducts;
+  }
+
+  removeBike(bikename: string): void {
+    this.lastDeletedProduct = bikename;
+    this.originalProducts.splice(
+      this.originalProducts.findIndex((item) => item.productName === bikename),
+      1
+    );
+  }
+
+  public static GetInstance() {
+    if (this._instance) {
+      return this._instance;
+    } else {
+      this._instance = new ProductService();
+      return this._instance;
+    }
   }
 }

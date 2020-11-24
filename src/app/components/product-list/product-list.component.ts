@@ -16,13 +16,12 @@ export class ProductListComponent implements OnInit {
     private lowerCasePipe: LowerCasePipe,
     private isNullOrEmpty: IfNullOrEmpty
   ) {
-    this.productService = new ProductService();
+    this.productService = ProductService.GetInstance();
   }
 
   ngOnInit() {
     console.log("Inside On ngOnInit of ProductListComponent");
-    this.products = this.productService.getProducts();
-    this.actualBikes = [...this.products];
+    this.loadData();
   }
 
   showImages: boolean = false;
@@ -71,9 +70,12 @@ export class ProductListComponent implements OnInit {
 
   onSuccessfullyDeleted(productName: string) {
     console.log("Inside Product List Componnet ", productName);
-    this.products.splice(
-      this.products.findIndex((item) => item.productName === productName),
-      1
-    );
+    this.productService.removeBike(productName);
+    this.loadData();
+  }
+
+  private loadData() {
+    this.products = this.productService.getProducts();
+    this.actualBikes = [...this.products];
   }
 }
