@@ -70,9 +70,18 @@ export class ProductListComponent implements OnInit {
     this.productService.removeBike(productName);
     this.loadData();
   }
-
+  onProductStatusChanged(product: IProduct) {
+    this.loadData();
+  }
   private loadData() {
-    this.products = this.productService.getProducts();
-    this.actualBikes = [...this.products];
+    this.productService.getProducts().subscribe(
+      (data: IProduct[]) => {
+        this.products = data;
+        this.actualBikes = [...this.products];
+      },
+      (error: any) => {
+        console.error("An error occured", error);
+      }
+    );
   }
 }

@@ -12,6 +12,7 @@ import { AccordianComponent } from "./components/accordian/accordian.component";
 import { NewListComponentComponent } from "./components/new-list-component/new-list-component.component";
 import { ProductService } from "./services/product.service";
 import { UtilityService } from "./services/utility.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { UtilityService } from "./services/utility.service";
     AccordianComponent,
     NewListComponentComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [
     UpperCasePipe,
     LowerCasePipe,

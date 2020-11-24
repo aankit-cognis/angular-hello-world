@@ -8,17 +8,20 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
+import { ProductService } from "src/app/services/product.service";
 
 @Component({
   selector: "app-product",
   templateUrl: "./product.component.html",
 })
 export class ProductComponent implements OnInit, OnChanges {
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   @Input() productToBeRendered: IProduct;
   @Input() canShowImage: boolean;
   @Output() onProductDeleted: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  onProductStatusChanged: EventEmitter<IProduct> = new EventEmitter<IProduct>();
 
   private counter: number = 0;
 
@@ -41,9 +44,16 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   deleteProduct() {
-    // console.log("Deleting product ", this.productToBeRendered.productName);
-
-    //HTTP call to the server. Or your complex logic.
     this.onProductDeleted.emit(this.productToBeRendered.productName);
+  }
+
+  changeStatus(id: number, status: string) {
+    this.productService.changeStatus(id, status).subscribe(
+      (data: IProduct) => {
+        console.log("Status Changed ", data);
+        this.onProductStatusChanged.emit(data);
+      },
+      (error) => {}
+    );
   }
 }

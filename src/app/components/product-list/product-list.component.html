@@ -23,7 +23,8 @@
 <div class="row" *ngIf="products && products.length; else noBikes" (mousemove)="mouseEnterEvent()">
   <div class="col-md-4 mt-3" *ngFor="let product of products; let i = index;">
     <app-product [productToBeRendered]="product" [canShowImage]="showImages"
-      (onProductDeleted)="onSuccessfullyDeleted($event)"></app-product>
+      (onProductDeleted)="onSuccessfullyDeleted($event)" (onProductStatusChanged)="onProductStatusChanged($event)">
+    </app-product>
   </div>
 </div>
 
