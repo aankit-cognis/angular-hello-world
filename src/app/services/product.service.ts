@@ -20,7 +20,7 @@ export class ProductService {
   getProducts(): Observable<IProduct[]> {
     console.log("Inside Product Service ! Get Products Method()");
     return this.http
-      .get<IProduct[]>(`${this._baseUrl}/open/products2`)
+      .get<IProduct[]>(`${this._baseUrl}/open/products`)
       .pipe(catchError(this.handleError));
   }
   changeStatus(id: number, status: string): Observable<IProduct> {

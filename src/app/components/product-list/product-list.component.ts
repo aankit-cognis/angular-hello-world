@@ -1,5 +1,7 @@
 import { UpperCasePipe } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subject } from "rxjs";
+import { takeUntil } from "rxjs/operators";
 import { IProduct } from "src/app/models/product.interface";
 import { ProductService } from "src/app/services/product.service";
 
@@ -7,11 +9,17 @@ import { ProductService } from "src/app/services/product.service";
   selector: "app-product-list",
   templateUrl: "product-list.component.html",
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<any> = new Subject();
+
   constructor(
     private upperCase: UpperCasePipe,
     private productService: ProductService
   ) {}
+  ngOnDestroy(): void {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
   showImages: boolean = true;
   searchText: string = "";
   selectedSort: string = "";
@@ -22,16 +30,19 @@ export class ProductListComponent {
     this.loadInitialData();
   }
   private loadInitialData() {
-    this.productService.getProducts().subscribe(
-      (data: IProduct[]) => {
-        console.log(data);
-        this.products = data;
-        this.actualProducts = [...this.products];
-      },
-      (error) => {
-        console.log("ERROR -", error);
-      }
-    );
+    this.productService
+      .getProducts()
+      .pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe(
+        (data: IProduct[]) => {
+          console.log(data);
+          this.products = data;
+          this.actualProducts = [...this.products];
+        },
+        (error) => {
+          console.log("ERROR -", error);
+        }
+      );
   }
   toggleImage(): void {
     this.showImages = !this.showImages;
