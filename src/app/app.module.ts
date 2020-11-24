@@ -13,6 +13,7 @@ import { ParentComponent } from "./components/parent.componnet";
 import { ChildComponent } from "./components/child.component";
 import { ProductService } from "./services/product.service";
 import { AccordianComponent } from "./components/accordian/accordian.component";
+import { UtilityService } from "./services/utility.service";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { AccordianComponent } from "./components/accordian/accordian.component";
     AccordianComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [UpperCasePipe, ProductService],
+  providers: [UpperCasePipe, ProductService, UtilityService],
   bootstrap: [HomeComponent],
 })
 export class AppModule {}

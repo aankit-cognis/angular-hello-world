@@ -2,6 +2,7 @@ import { EventEmitter } from "@angular/core";
 import { Component, Input, OnInit, Output } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
 import { ProductService } from "src/app/services/product.service";
+import { UtilityService } from "src/app/services/utility.service";
 
 @Component({
   selector: "app-procuct",
@@ -15,11 +16,12 @@ export class ProcuctComponent implements OnInit {
   @Output()
   onStatusChanged: EventEmitter<IProduct> = new EventEmitter<IProduct>();
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private utilityService: UtilityService
+  ) {}
 
-  ngOnInit() {
-    //console.log("From ngOnInit() ProcuctComponent");
-  }
+  ngOnInit() {}
 
   getPriceStyles(product: IProduct) {
     const is200 = product.price === 200;
@@ -37,6 +39,11 @@ export class ProcuctComponent implements OnInit {
     this.productService.changeStatus(id, status).subscribe(
       (data: IProduct) => {
         console.log("Status Changed", data);
+        this.utilityService.showError(
+          `${data.productName} is ${
+            status == "deactivate" ? "de activated" : "re activated"
+          }`
+        );
         this.onStatusChanged.emit(data);
       },
       (error) => {

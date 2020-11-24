@@ -8,12 +8,9 @@ import { Observable } from "rxjs";
 })
 export class ProductService {
   lastDeletedProduct: string = "";
-  notyf: Notyf;
 
   private _baseUrl: string = "https://localhost:44316/api";
-  constructor(private http: HttpClient) {
-    this.notyf = new Notyf();
-  }
+  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<IProduct[]> {
     console.log("Inside Product Service ! Get Products Method()");
@@ -34,7 +31,5 @@ export class ProductService {
   }
   deleteProduct(productName: string): void {
     this.lastDeletedProduct = productName;
-
-    this.notyf.error(`${productName} deleted`);
   }
 }
