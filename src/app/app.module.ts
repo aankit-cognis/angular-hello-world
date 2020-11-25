@@ -24,6 +24,7 @@ import { IfNullOrEmpty } from "./pipes/if-null-or-empty.pipe";
 import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
 import { AuthService } from "./services/auth.service";
+import { IsLoggedinUserService } from "./services/is-loggedin-user.service";
 
 @NgModule({
   declarations: [
@@ -59,11 +60,12 @@ import { AuthService } from "./services/auth.service";
       {
         path: "products",
         component: ProductListComponent,
+        canActivate: [IsLoggedinUserService],
       },
       {
         path: "products/:id",
         component: ProductDetailsComponent,
-        canActivate: [CanActivateProductDetailsService],
+        canActivate: [IsLoggedinUserService, CanActivateProductDetailsService],
         resolve: {
           product: ProductDetailResolverService,
         },
@@ -91,6 +93,7 @@ import { AuthService } from "./services/auth.service";
     CanActivateProductDetailsService,
     ProductDetailResolverService,
     AuthService,
+    IsLoggedinUserService,
   ],
   bootstrap: [HomeComponent],
 })
