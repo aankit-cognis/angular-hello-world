@@ -9,15 +9,21 @@
       <a class="nav-link" [routerLink]="['/products']" [routerLinkActive]="['active']">Products</a>
     </li>
   </ul>
-  <ul class="navbar-nav">
+  <ul class="navbar-nav" *ngIf="isLoggedInUser">
     <li class="nav-item">
-      <a class="nav-link" href="#"> About </a>
+      <a class="nav-link" href="#"> Hello Swagat </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"> Contacts </a>
+      <a class="nav-link" href="#"> LogOut </a>
+    </li>
+
+  </ul>
+  <ul class="navbar-nav" *ngIf="!isLoggedInUser">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['active']">Register</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"> Settings </a>
+      <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']"> Login </a>
     </li>
   </ul>
 </nav>

@@ -22,6 +22,9 @@ import { RouterModule } from "@angular/router";
 import { ProductDetailsGuradService } from "./guards/product-details-gurad.service";
 import { ProductResolverService } from "./resolvers/product-resolver.service";
 import { NavbarComponent } from "./components/navbar/navbar.component";
+import { AuthService } from "./services/auth.service";
+import { RegisterComponent } from "./components/register/register.component";
+import { LoginComponent } from "./components/login/login.component";
 
 @NgModule({
   declarations: [
@@ -45,6 +48,14 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot([
+      {
+        path: "register",
+        component: RegisterComponent,
+      },
+      {
+        path: "login",
+        component: LoginComponent,
+      },
       {
         path: "products",
         component: ProductListComponent,
@@ -81,6 +92,7 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
       useClass: ProductDetailsGuradService,
     },
     ProductResolverService,
+    AuthService,
   ],
   bootstrap: [HomeComponent],
 })
