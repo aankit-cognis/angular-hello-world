@@ -21,6 +21,7 @@ import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { RouterModule } from "@angular/router";
 import { ProductDetailsGuradService } from "./guards/product-details-gurad.service";
 import { ProductResolverService } from "./resolvers/product-resolver.service";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProductResolverService } from "./resolvers/product-resolver.service";
     ProductDetailsComponent,
     PageNotFoundComponent,
     WelcomeComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
