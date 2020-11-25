@@ -6,9 +6,7 @@
       <input type="text" class="form-control" placeholder="Search " [(ngModel)]="searchText" (input)="filterBikes()">
     </div>
   </div>
-  <div class="col-md-3">
-    <button type="button" class="btn btn-info" (click)="changeName()">Change Name</button>
-  </div>
+
   <div class="col-md-3">
     <button type="button" class="btn btn-warning float-right" (click)="toggleImages()">{{showImages ? 'Hide' : 'Show'}}
       Images</button>
@@ -27,9 +25,6 @@
     </app-product>
   </div>
 </div>
-
-
-
 <ng-template #noBikes>
   <div class="alert alert-warning" role="alert">
     <strong>OOps No Bikes are available</strong>

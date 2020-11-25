@@ -13,7 +13,7 @@
     <button type="button" class="btn btn-success mr-1 btn-sm" [disabled]="!productToBeRendered.isActive">Buy
       Now</button>
     <button type="button" class="btn btn-danger mr-1 btn-sm" [disabled]="!productToBeRendered.isActive"
-      (click)="deleteProduct()">Delete</button>
+      (click)="deleteProduct(productToBeRendered.productId)">Delete</button>
     <button type="button" class="btn btn-info mr-1 btn-sm" *ngIf="!productToBeRendered.isActive"
       (click)="changeStatus(productToBeRendered.productId,'activate')">Activate</button>
     <button type="button" class="btn btn-info mr-1 btn-sm" *ngIf="productToBeRendered.isActive"

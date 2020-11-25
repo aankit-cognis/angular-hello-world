@@ -9,13 +9,17 @@ import {
 } from "@angular/core";
 import { IProduct } from "src/app/models/product.interface";
 import { ProductService } from "src/app/services/product.service";
+import { UtilityService } from "src/app/services/utility.service";
 
 @Component({
   selector: "app-product",
   templateUrl: "./product.component.html",
 })
 export class ProductComponent implements OnInit, OnChanges {
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private utilityService: UtilityService
+  ) {}
 
   @Input() productToBeRendered: IProduct;
   @Input() canShowImage: boolean;
@@ -43,8 +47,15 @@ export class ProductComponent implements OnInit, OnChanges {
     }
   }
 
-  deleteProduct() {
-    this.onProductDeleted.emit(this.productToBeRendered.productName);
+  deleteProduct(id: number) {
+    this.productService.deleteProduct(id).subscribe(
+      (data: IProduct) => {
+        console.log("Status Changed ", data);
+        this.utilityService.showError(`${data.productName} is deleted.`);
+        this.onProductDeleted.emit(this.productToBeRendered.productName);
+      },
+      (error) => {}
+    );
   }
 
   changeStatus(id: number, status: string) {

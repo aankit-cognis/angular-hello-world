@@ -48,9 +48,6 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  changeName() {
-    this.products[0].productName = "Nexon";
-  }
   mouseEnterEvent() {}
 
   filterBikes() {
@@ -66,8 +63,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onSuccessfullyDeleted(productName: string) {
-    console.log("Inside Product List Componnet ", productName);
-    this.productService.removeBike(productName);
     this.loadData();
   }
   onProductStatusChanged(product: IProduct) {
