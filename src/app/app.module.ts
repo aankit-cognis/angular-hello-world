@@ -21,6 +21,8 @@ import { CanActivateProductDetailsService } from "./services/can-activate-produc
 import { ProductDetailResolverService } from "./resolvers/product-detail-resolver.service";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { IfNullOrEmpty } from "./pipes/if-null-or-empty.pipe";
+import { RegisterComponent } from "./components/register/register.component";
+import { LoginComponent } from "./components/login/login.component";
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { IfNullOrEmpty } from "./pipes/if-null-or-empty.pipe";
     ProductDetailsComponent,
     PageNotFoundComponent,
     NavbarComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,14 @@ import { IfNullOrEmpty } from "./pipes/if-null-or-empty.pipe";
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot([
+      {
+        path: "register",
+        component: RegisterComponent,
+      },
+      {
+        path: "login",
+        component: LoginComponent,
+      },
       {
         path: "products",
         component: ProductListComponent,
