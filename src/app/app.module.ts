@@ -18,6 +18,7 @@ import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { ProductDetailsComponent } from "./components/product-details/product-details.component";
 import { RouterModule } from "@angular/router";
+import { CanActivateProductDetailsService } from "./services/can-activate-product-details.service";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { RouterModule } from "@angular/router";
       {
         path: "products/:id",
         component: ProductDetailsComponent,
+        canActivate: [CanActivateProductDetailsService],
       },
       {
         path: "home",
@@ -67,6 +69,7 @@ import { RouterModule } from "@angular/router";
     IfNullOrEmpty,
     ProductService,
     UtilityService,
+    CanActivateProductDetailsService,
   ],
   bootstrap: [HomeComponent],
 })
