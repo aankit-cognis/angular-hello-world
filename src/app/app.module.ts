@@ -19,6 +19,7 @@ import { ProductDetailsComponent } from "./components/product-details/product-de
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { RouterModule } from "@angular/router";
+import { ProductDetailsGuradService } from "./guards/product-details-gurad.service";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { RouterModule } from "@angular/router";
       {
         path: "products/:id",
         component: ProductDetailsComponent,
+        canActivate: [ProductDetailsGuradService],
       },
       {
         path: "welcome",
@@ -64,7 +66,12 @@ import { RouterModule } from "@angular/router";
       },
     ]),
   ],
-  providers: [UpperCasePipe, ProductService, UtilityService],
+  providers: [
+    UpperCasePipe,
+    ProductService,
+    UtilityService,
+    ProductDetailsGuradService,
+  ],
   bootstrap: [HomeComponent],
 })
 export class AppModule {}
