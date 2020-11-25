@@ -16,15 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   productId: number;
   currentProduct: IProduct;
   ngOnInit() {
-    console.log(this.activateRoute.snapshot);
-    console.log(this.activateRoute.snapshot.params["id"]);
-    this.productId = this.activateRoute.snapshot.params["id"];
-
-    this.productService.getProduct(this.productId).subscribe(
-      (data: IProduct) => {
-        this.currentProduct = data;
-      },
-      (error) => {}
-    );
+    console.log("Inside COmponent", this.activateRoute);
+    this.currentProduct = this.activateRoute.snapshot.data["product"];
   }
 }

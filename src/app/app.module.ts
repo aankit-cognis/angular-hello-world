@@ -19,6 +19,7 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 import { ProductDetailsComponent } from "./components/product-details/product-details.component";
 import { RouterModule } from "@angular/router";
 import { CanActivateProductDetailsService } from "./services/can-activate-product-details.service";
+import { ProductDetailResolverService } from "./resolvers/product-detail-resolver.service";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,9 @@ import { CanActivateProductDetailsService } from "./services/can-activate-produc
         path: "products/:id",
         component: ProductDetailsComponent,
         canActivate: [CanActivateProductDetailsService],
+        resolve: {
+          product: ProductDetailResolverService,
+        },
       },
       {
         path: "home",
@@ -70,6 +74,7 @@ import { CanActivateProductDetailsService } from "./services/can-activate-produc
     ProductService,
     UtilityService,
     CanActivateProductDetailsService,
+    ProductDetailResolverService,
   ],
   bootstrap: [HomeComponent],
 })
