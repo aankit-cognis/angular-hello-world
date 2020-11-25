@@ -2,17 +2,13 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { HomeComponent } from "./components/home.component";
-import { ProductListComponent } from "./components/product-list/product-list.component";
 import { FormsModule } from "@angular/forms";
 import { IfNullOrEmptyPipe } from "./pipes/if-null-or-empty.pipe";
 import { UpperCasePipe } from "@angular/common";
 import { FilterProductPipe } from "./pipes/filter-product.pipe";
-import { ProcuctComponent } from "./components/procuct/procuct.component";
 import { ProductService } from "./services/product.service";
-import { AccordianComponent } from "./components/accordian/accordian.component";
 import { UtilityService } from "./services/utility.service";
 import { NgHttpLoaderModule } from "ng-http-loader";
-import { ProductDetailsComponent } from "./components/product-details/product-details.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { RouterModule } from "@angular/router";
@@ -23,23 +19,17 @@ import { AuthService } from "./services/auth.service";
 import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
 import { IsLoggedInUserGuardService } from "./guards/is-logged-in-user-guard.service";
+import { ProductsModule } from "./modules/products/products.module";
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ProductListComponent,
-    IfNullOrEmptyPipe,
-    FilterProductPipe,
-    ProcuctComponent,
-    AccordianComponent,
-    ProductDetailsComponent,
     PageNotFoundComponent,
     WelcomeComponent,
     NavbarComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot([
@@ -50,19 +40,6 @@ import { IsLoggedInUserGuardService } from "./guards/is-logged-in-user-guard.ser
       {
         path: "login",
         component: LoginComponent,
-      },
-      {
-        path: "products",
-        component: ProductListComponent,
-        canActivate: [IsLoggedInUserGuardService],
-      },
-      {
-        path: "products/:id",
-        component: ProductDetailsComponent,
-        canActivate: [IsLoggedInUserGuardService, ProductDetailsGuradService],
-        resolve: {
-          productData: ProductResolverService,
-        },
       },
       {
         path: "welcome",
@@ -78,6 +55,7 @@ import { IsLoggedInUserGuardService } from "./guards/is-logged-in-user-guard.ser
         component: PageNotFoundComponent,
       },
     ]),
+    ProductsModule,
   ],
   providers: [
     UpperCasePipe,
