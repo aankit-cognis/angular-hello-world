@@ -7,6 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from "@angular/core";
+import { Router } from "@angular/router";
 import { IProduct } from "src/app/models/product.interface";
 import { ProductService } from "src/app/services/product.service";
 import { UtilityService } from "src/app/services/utility.service";
@@ -18,7 +19,8 @@ import { UtilityService } from "src/app/services/utility.service";
 export class ProductComponent implements OnInit, OnChanges {
   constructor(
     private productService: ProductService,
-    private utilityService: UtilityService
+    private utilityService: UtilityService,
+    private router: Router
   ) {}
 
   @Input() productToBeRendered: IProduct;
@@ -66,5 +68,8 @@ export class ProductComponent implements OnInit, OnChanges {
       },
       (error) => {}
     );
+  }
+  navigateToDetails(id: number) {
+    this.router.navigate(["/products", id]);
   }
 }
