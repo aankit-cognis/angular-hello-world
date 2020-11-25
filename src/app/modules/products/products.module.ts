@@ -11,12 +11,11 @@ import { IsLoggedInUserGuardService } from "src/app/guards/is-logged-in-user-gua
 import { ProductDetailsGuradService } from "src/app/guards/product-details-gurad.service";
 import { ProductResolverService } from "src/app/resolvers/product-resolver.service";
 import { FormsModule } from "@angular/forms";
+import { PipesModule } from "src/app/pipes/pipes.module";
 
 @NgModule({
   declarations: [
     ProductListComponent,
-    IfNullOrEmptyPipe,
-    FilterProductPipe,
     ProcuctComponent,
     AccordianComponent,
     ProductDetailsComponent,
@@ -24,6 +23,7 @@ import { FormsModule } from "@angular/forms";
   imports: [
     CommonModule,
     FormsModule,
+    PipesModule,
     RouterModule.forChild([
       {
         path: "products",
