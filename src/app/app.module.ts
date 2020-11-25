@@ -8,9 +8,6 @@ import { IfNullOrEmptyPipe } from "./pipes/if-null-or-empty.pipe";
 import { UpperCasePipe } from "@angular/common";
 import { FilterProductPipe } from "./pipes/filter-product.pipe";
 import { ProcuctComponent } from "./components/procuct/procuct.component";
-import { CustomComponent } from "./components/custom/custom.component";
-import { ParentComponent } from "./components/parent.componnet";
-import { ChildComponent } from "./components/child.component";
 import { ProductService } from "./services/product.service";
 import { AccordianComponent } from "./components/accordian/accordian.component";
 import { UtilityService } from "./services/utility.service";
@@ -34,9 +31,6 @@ import { IsLoggedInUserGuardService } from "./guards/is-logged-in-user-guard.ser
     IfNullOrEmptyPipe,
     FilterProductPipe,
     ProcuctComponent,
-    CustomComponent,
-    ParentComponent,
-    ChildComponent,
     AccordianComponent,
     ProductDetailsComponent,
     PageNotFoundComponent,
