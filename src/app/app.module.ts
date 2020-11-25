@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { RouterModule } from "@angular/router";
 import { ProductDetailsGuradService } from "./guards/product-details-gurad.service";
+import { ProductResolverService } from "./resolvers/product-resolver.service";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,9 @@ import { ProductDetailsGuradService } from "./guards/product-details-gurad.servi
         path: "products/:id",
         component: ProductDetailsComponent,
         canActivate: [ProductDetailsGuradService],
+        resolve: {
+          productData: ProductResolverService,
+        },
       },
       {
         path: "welcome",
@@ -70,7 +74,11 @@ import { ProductDetailsGuradService } from "./guards/product-details-gurad.servi
     UpperCasePipe,
     ProductService,
     UtilityService,
-    ProductDetailsGuradService,
+    {
+      provide: ProductDetailsGuradService,
+      useClass: ProductDetailsGuradService,
+    },
+    ProductResolverService,
   ],
   bootstrap: [HomeComponent],
 })

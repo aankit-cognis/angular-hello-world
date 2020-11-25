@@ -18,7 +18,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("ActivatedRoute", this.activatedRoute);
+    console.log("Inside INIT", this.activatedRoute);
     console.log("Router", this.router);
 
     this.currentProductId = +this.activatedRoute.snapshot.paramMap.get("id");
@@ -28,13 +28,14 @@ export class ProductDetailsComponent implements OnInit {
     this.router.navigate(["/products"]);
   }
   private loadInitialData() {
-    this.productService.getProduct(this.currentProductId).subscribe(
-      (data: IProduct) => {
-        this.currentProduct = data;
-      },
-      (error) => {
-        console.log("ERROR -", error);
-      }
-    );
+    // this.productService.getProduct(this.currentProductId).subscribe(
+    //   (data: IProduct) => {
+    //     this.currentProduct = data;
+    //   },
+    //   (error) => {
+    //     console.log("ERROR -", error);
+    //   }
+    // );
+    this.currentProduct = this.activatedRoute.snapshot.data["productData"];
   }
 }
