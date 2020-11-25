@@ -16,6 +16,9 @@
       <div class="card-footer">
         <small class="text-muted">Created on - {{currentProduct.createdDate | date}}, Last Updated on -
           {{currentProduct.lastUpdatedDate | date | ifNullOrEmpty : 'N/A'}}</small>
+        <button type="button" class="btn btn-primary pull-right" (click)="goBack()">
+          <i class="fa fa-arrow-left" aria-hidden="true"></i>
+          Back</button>
       </div>
     </div>
   </div>
