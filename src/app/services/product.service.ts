@@ -21,7 +21,11 @@ export class ProductService {
       .get<IProduct[]>(`${this._baseUrl}/open/products`)
       .pipe(catchError(this.handleError));
   }
-
+  getProduct(id: number): Observable<IProduct> {
+    return this.http
+      .get<IProduct>(`${this._baseUrl}/open/products/${id}`)
+      .pipe(catchError(this.handleError));
+  }
   changeStatus(id: number, status: string): Observable<IProduct> {
     if (status === "activate") {
       return this.http
