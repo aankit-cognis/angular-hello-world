@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { NgbDatepickerI18nDefault } from "@ng-bootstrap/ng-bootstrap/datepicker/datepicker-i18n";
 
 @Pipe({
   name: "nullOrEmpty",

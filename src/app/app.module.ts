@@ -3,7 +3,6 @@ import { NgModule } from "@angular/core";
 import { HomeComponent } from "./components/home.component";
 import { ProductComponent } from "./components/product/product.component";
 import { ProductListComponent } from "./components/product-list/product-list.component";
-import { IfNullOrEmpty } from "./pipes/if-null-or-empty.pipe";
 import { LowerCasePipe, UpperCasePipe } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { FilterBikesPipe } from "./pipes/filter-bikes.pipe";
@@ -20,6 +19,8 @@ import { ProductDetailsComponent } from "./components/product-details/product-de
 import { RouterModule } from "@angular/router";
 import { CanActivateProductDetailsService } from "./services/can-activate-product-details.service";
 import { ProductDetailResolverService } from "./resolvers/product-detail-resolver.service";
+import { NavbarComponent } from "./components/navbar/navbar.component";
+import { IfNullOrEmpty } from "./pipes/if-null-or-empty.pipe";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ProductDetailResolverService } from "./resolvers/product-detail-resolve
     WelcomeComponent,
     ProductDetailsComponent,
     PageNotFoundComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
