@@ -33,6 +33,7 @@ import { HttpInterceptorService } from "./services/http-interceptor.service";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot([

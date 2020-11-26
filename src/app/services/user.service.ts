@@ -8,8 +8,8 @@ import { map } from "rxjs/operators";
   providedIn: "root",
 })
 export class UserService {
-  private _baseUrl: string = "https://localhost:44316";
-  // private _baseUrl: string = "http://testapi.techriff.in";
+  // private _baseUrl: string = "https://localhost:44316";
+  private _baseUrl: string = "http://testapi.techriff.in";
 
   constructor(private http: HttpClient) {}
 
