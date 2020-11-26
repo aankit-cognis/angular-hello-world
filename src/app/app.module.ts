@@ -21,6 +21,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { IsLoggedInUserGuardService } from "./guards/is-logged-in-user-guard.service";
 import { ProductsModule } from "./modules/products/products.module";
 import { UserService } from "./services/user.service";
+import { EmployeesModule } from "./modules/employees/employees.module";
 
 @NgModule({
   declarations: [
@@ -56,11 +57,16 @@ import { UserService } from "./services/user.service";
         loadChildren: "./modules/products/products.module#ProductsModule",
       },
       {
+        path: "employees",
+        loadChildren: "./modules/employees/employees.module#EmployeesModule",
+      },
+      {
         path: "**",
         component: PageNotFoundComponent,
       },
     ]),
-    ProductsModule,
+    // ProductsModule,
+    // EmployeesModule,
   ],
   providers: [
     UpperCasePipe,

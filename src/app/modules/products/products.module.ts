@@ -26,25 +26,17 @@ import { PipesModule } from "src/app/pipes/pipes.module";
     PipesModule,
     RouterModule.forChild([
       {
-        path: "products",
-        children: [
-          {
-            path: "",
-            component: ProductListComponent,
-            canActivate: [IsLoggedInUserGuardService],
-          },
-          {
-            path: ":id",
-            component: ProductDetailsComponent,
-            canActivate: [
-              IsLoggedInUserGuardService,
-              ProductDetailsGuradService,
-            ],
-            resolve: {
-              productData: ProductResolverService,
-            },
-          },
-        ],
+        path: "",
+        component: ProductListComponent,
+        canActivate: [IsLoggedInUserGuardService],
+      },
+      {
+        path: ":id",
+        component: ProductDetailsComponent,
+        canActivate: [IsLoggedInUserGuardService, ProductDetailsGuradService],
+        resolve: {
+          productData: ProductResolverService,
+        },
       },
     ]),
   ],
