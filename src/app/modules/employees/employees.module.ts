@@ -3,7 +3,6 @@ import { CommonModule } from "@angular/common";
 import { EmpListComponent } from "./emp-list/emp-list.component";
 import { EmpDetailsComponent } from "./emp-details/emp-details.component";
 import { RouterModule } from "@angular/router";
-import { IfNullOrEmpty } from "src/app/pipes/if-null-or-empty.pipe";
 import { SharedModule } from "src/app/shared.module";
 
 @NgModule({
@@ -11,11 +10,11 @@ import { SharedModule } from "src/app/shared.module";
     CommonModule,
     RouterModule.forChild([
       {
-        path: "employees",
+        path: "",
         component: EmpListComponent,
       },
       {
-        path: "employees/details",
+        path: "details",
         component: EmpDetailsComponent,
       },
     ]),

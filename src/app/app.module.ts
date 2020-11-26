@@ -49,6 +49,14 @@ import { EmployeesModule } from "./modules/employees/employees.module";
         component: WelcomeComponent,
       },
       {
+        path: "products",
+        loadChildren: "./modules/product/product.module#ProductModule",
+      },
+      {
+        path: "employees",
+        loadChildren: "./modules/employees/employees.module#EmployeesModule",
+      },
+      {
         path: "",
         component: WelcomeComponent,
       },
@@ -57,8 +65,8 @@ import { EmployeesModule } from "./modules/employees/employees.module";
         component: PageNotFoundComponent,
       },
     ]),
-    ProductModule,
-    EmployeesModule,
+    // ProductModule,
+    // EmployeesModule,
   ],
   providers: [
     UpperCasePipe,
