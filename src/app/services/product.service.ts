@@ -20,41 +20,26 @@ export class ProductService {
 
   getProducts(): Observable<IProduct[]> {
     console.log("Inside Product Service ! Get Products Method()");
-    return this.http
-      .get<IProduct[]>(`${this._baseUrl}/open/products`)
-      .pipe(catchError(this.handleError));
+    return this.http.get<IProduct[]>(`${this._baseUrl}/open/products`);
   }
 
   getProduct(id: number): Observable<IProduct> {
-    return this.http
-      .get<IProduct>(`${this._baseUrl}/open/products/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get<IProduct>(`${this._baseUrl}/open/products/${id}`);
   }
   changeStatus(id: number, status: string): Observable<IProduct> {
     if (status == "reactivate") {
-      return this.http
-        .post<IProduct>(`${this._baseUrl}/open/products/${id}/reactivate`, null)
-        .pipe(catchError(this.handleError));
+      return this.http.post<IProduct>(
+        `${this._baseUrl}/open/products/${id}/reactivate`,
+        null
+      );
     } else {
-      return this.http
-        .post<IProduct>(`${this._baseUrl}/open/products/${id}/deactivate`, null)
-        .pipe(catchError(this.handleError));
+      return this.http.post<IProduct>(
+        `${this._baseUrl}/open/products/${id}/deactivate`,
+        null
+      );
     }
   }
   deleteProduct(id: number): Observable<IProduct> {
-    return this.http
-      .delete<IProduct>(`${this._baseUrl}/open/products/${id}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  private handleError(errorResponse: HttpErrorResponse) {
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error("Client Side Errors ", errorResponse.error);
-    } else {
-      console.error("Server Side Errors ", errorResponse.error);
-    }
-    return throwError(
-      "Sorry, We are having some issues now. Please get back later."
-    );
+    return this.http.delete<IProduct>(`${this._baseUrl}/open/products/${id}`);
   }
 }

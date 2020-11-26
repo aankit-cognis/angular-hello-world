@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { HomeComponent } from "./components/home.component";
 import { FormsModule } from "@angular/forms";
@@ -22,6 +22,7 @@ import { IsLoggedInUserGuardService } from "./guards/is-logged-in-user-guard.ser
 import { ProductsModule } from "./modules/products/products.module";
 import { UserService } from "./services/user.service";
 import { EmployeesModule } from "./modules/employees/employees.module";
+import { HttpInterceptorService } from "./services/http-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -80,6 +81,11 @@ import { EmployeesModule } from "./modules/employees/employees.module";
     AuthService,
     IsLoggedInUserGuardService,
     UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [HomeComponent],
 })
