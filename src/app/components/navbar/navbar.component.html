@@ -8,6 +8,12 @@
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['/products']" [routerLinkActive]="['active']">Products</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/employees']" [routerLinkActive]="['active']">Employees</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/employees/details']" [routerLinkActive]="['active']">Emp Details</a>
+    </li>
   </ul>
 
   <ul class="navbar-nav" *ngIf="isLoggedInUser">

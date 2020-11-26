@@ -10,14 +10,13 @@ import { RouterModule } from "@angular/router";
 import { IsLoggedinUserService } from "src/app/services/is-loggedin-user.service";
 import { CanActivateProductDetailsService } from "src/app/services/can-activate-product-details.service";
 import { ProductDetailResolverService } from "src/app/resolvers/product-detail-resolver.service";
+import { SharedModule } from "src/app/shared.module";
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductComponent,
     ProductDetailsComponent,
-    IfNullOrEmpty,
-    FilterBikesPipe,
   ],
   imports: [
     CommonModule,
@@ -37,6 +36,7 @@ import { ProductDetailResolverService } from "src/app/resolvers/product-detail-r
         },
       },
     ]),
+    SharedModule,
   ],
 })
 export class ProductModule {}

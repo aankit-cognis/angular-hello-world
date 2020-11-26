@@ -19,6 +19,7 @@ import { LoginComponent } from "./components/login/login.component";
 import { AuthService } from "./services/auth.service";
 import { IsLoggedinUserService } from "./services/is-loggedin-user.service";
 import { ProductModule } from "./modules/product/product.module";
+import { EmployeesModule } from "./modules/employees/employees.module";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { ProductModule } from "./modules/product/product.module";
       },
     ]),
     ProductModule,
+    EmployeesModule,
   ],
   providers: [
     UpperCasePipe,
