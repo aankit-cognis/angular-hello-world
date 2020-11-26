@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterContentChecked, Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+import { IUserToken } from "src/app/models/user-token.interface";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -6,11 +8,21 @@ import { AuthService } from "src/app/services/auth.service";
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.scss"],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterContentChecked {
   constructor(private authService: AuthService) {}
+  ngAfterContentChecked(): void {
+    this.authService
+      .isUserLoggedIn()
+      .subscribe((data) => (this.loggedInUser = data));
+  }
 
-  isLoggedInUser: boolean;
+  loggedInUser: IUserToken;
   ngOnInit() {
-    this.isLoggedInUser = this.authService.isUserLoggedIn();
+    this.authService
+      .isUserLoggedIn()
+      .subscribe((data) => (this.loggedInUser = data));
+  }
+  logOut() {
+    this.authService.logOut();
   }
 }

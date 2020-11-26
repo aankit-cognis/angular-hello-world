@@ -20,6 +20,7 @@ import { RegisterComponent } from "./components/register/register.component";
 import { LoginComponent } from "./components/login/login.component";
 import { IsLoggedInUserGuardService } from "./guards/is-logged-in-user-guard.service";
 import { ProductsModule } from "./modules/products/products.module";
+import { UserService } from "./services/user.service";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { ProductsModule } from "./modules/products/products.module";
     ProductResolverService,
     AuthService,
     IsLoggedInUserGuardService,
+    UserService,
   ],
   bootstrap: [HomeComponent],
 })

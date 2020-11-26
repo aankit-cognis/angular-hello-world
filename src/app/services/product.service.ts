@@ -11,7 +11,8 @@ import { catchError } from "rxjs/operators";
 export class ProductService {
   lastDeletedProduct: string = "";
 
-  private _baseUrl: string = "http://testapi.techriff.in/api";
+  private _baseUrl: string = "https://localhost:44316/api";
+  // private _baseUrl: string = "http://testapi.techriff.in/api";
   constructor(
     private http: HttpClient,
     private utilityService: UtilityService
