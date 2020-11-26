@@ -23,6 +23,7 @@ import { ProductsModule } from "./modules/products/products.module";
 import { UserService } from "./services/user.service";
 import { EmployeesModule } from "./modules/employees/employees.module";
 import { HttpInterceptorService } from "./services/http-interceptor.service";
+import { SharedModule } from "./shared.module";
 
 @NgModule({
   declarations: [
@@ -30,11 +31,12 @@ import { HttpInterceptorService } from "./services/http-interceptor.service";
     PageNotFoundComponent,
     WelcomeComponent,
     NavbarComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
+    SharedModule,
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot([
       {

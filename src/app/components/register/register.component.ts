@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.scss"],
 })
 export class RegisterComponent implements OnInit {
+  originalData: any = {
+    fullName: "sasas",
+    email: "sas",
+    country: "india",
+    notes: "sasa",
+    isSubscribe: true,
+    gender: "male",
+  };
 
-  constructor() { }
+  data = { ...this.originalData };
 
-  ngOnInit() {
+  constructor() {}
+  ngOnInit() {}
+  onSubmit(form) {
+    console.log("Inside Form", form.value);
   }
-
 }

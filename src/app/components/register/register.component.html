@@ -1,3 +1,47 @@
-<p>
-  register works!
-</p>
+<form class="mt-3" #regForm="ngForm" (ngSubmit)="onSubmit(regForm.form)">
+  <div class="form-group">
+    <label for="fullName">Name</label>
+    <input type="text" class="form-control" id="fullName" placeholder="Your full name" name="fullName"
+      [(ngModel)]="data.fullName">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+      [(ngModel)]="data.email" name="email">
+  </div>
+  <div class="form-group">
+    <label for="country">Select Country</label>
+    <select class="form-control" id="country" name="country" [(ngModel)]="data.country">
+      <option value="usa">USA</option>
+      <option value="india">India</option>
+      <option value="srilanka">Sri Lanka</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="notes">Notes</label>
+    <textarea class="form-control" name="notes" id="notes" rows="3" [(ngModel)]="data.notes"></textarea>
+  </div>
+  <div class="form-check form-group">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="isSubscribe"
+      [(ngModel)]="data.isSubscribe">
+    <label class="form-check-label" for="exampleCheck1">Subscribe</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="exampleRadios1" value="male"
+      [(ngModel)]="data.gender">
+    <label class="form-check-label" for="exampleRadios1">
+      Male
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="gender" id="exampleRadios2" value="female"
+      [(ngModel)]="data.gender">
+    <label class="form-check-label" for="exampleRadios2">
+      Female
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h5>{{data | json }}</h5>

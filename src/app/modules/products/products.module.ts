@@ -11,7 +11,7 @@ import { IsLoggedInUserGuardService } from "src/app/guards/is-logged-in-user-gua
 import { ProductDetailsGuradService } from "src/app/guards/product-details-gurad.service";
 import { ProductResolverService } from "src/app/resolvers/product-resolver.service";
 import { FormsModule } from "@angular/forms";
-import { PipesModule } from "src/app/pipes/pipes.module";
+import { SharedModule } from "src/app/shared.module";
 
 @NgModule({
   declarations: [
@@ -22,8 +22,7 @@ import { PipesModule } from "src/app/pipes/pipes.module";
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    PipesModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: "",
