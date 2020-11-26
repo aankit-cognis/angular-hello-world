@@ -21,29 +21,29 @@ export class ProductService {
   getProducts(): Observable<IProduct[]> {
     console.log("Inside Product Service ! Get Products Method()");
     return this.http
-      .get<IProduct[]>(`${this._baseUrl}/open/products`)
+      .get<IProduct[]>(`${this._baseUrl}/products`)
       .pipe(catchError(this.handleError));
   }
 
   getProduct(id: number): Observable<IProduct> {
     return this.http
-      .get<IProduct>(`${this._baseUrl}/open/products/${id}`)
+      .get<IProduct>(`${this._baseUrl}/products/${id}`)
       .pipe(catchError(this.handleError));
   }
   changeStatus(id: number, status: string): Observable<IProduct> {
     if (status == "reactivate") {
       return this.http
-        .post<IProduct>(`${this._baseUrl}/open/products/${id}/reactivate`, null)
+        .post<IProduct>(`${this._baseUrl}/products/${id}/reactivate`, null)
         .pipe(catchError(this.handleError));
     } else {
       return this.http
-        .post<IProduct>(`${this._baseUrl}/open/products/${id}/deactivate`, null)
+        .post<IProduct>(`${this._baseUrl}/products/${id}/deactivate`, null)
         .pipe(catchError(this.handleError));
     }
   }
   deleteProduct(id: number): Observable<IProduct> {
     return this.http
-      .delete<IProduct>(`${this._baseUrl}/open/products/${id}`)
+      .delete<IProduct>(`${this._baseUrl}/products/${id}`)
       .pipe(catchError(this.handleError));
   }
 
