@@ -52,6 +52,10 @@ import { UserService } from "./services/user.service";
         pathMatch: "full",
       },
       {
+        path: "products",
+        loadChildren: "./modules/products/products.module#ProductsModule",
+      },
+      {
         path: "**",
         component: PageNotFoundComponent,
       },
