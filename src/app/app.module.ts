@@ -5,7 +5,7 @@ import { LowerCasePipe, UpperCasePipe } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { ProductService } from "./services/product.service";
 import { UtilityService } from "./services/utility.service";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { NgHttpLoaderModule } from "ng-http-loader";
 import { WelcomeComponent } from "./components/welcome/welcome.component";
 import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
@@ -21,6 +21,7 @@ import { IsLoggedinUserService } from "./services/is-loggedin-user.service";
 import { ProductModule } from "./modules/product/product.module";
 import { EmployeesModule } from "./modules/employees/employees.module";
 import { SharedModule } from "./shared.module";
+import { WiproHttpInterceptor } from "./services/http-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -74,12 +75,20 @@ import { SharedModule } from "./shared.module";
     UpperCasePipe,
     LowerCasePipe,
     IfNullOrEmpty,
-    ProductService,
+    {
+      provide: ProductService,
+      useClass: ProductService,
+    },
     UtilityService,
     CanActivateProductDetailsService,
     ProductDetailResolverService,
     AuthService,
     IsLoggedinUserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: WiproHttpInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [HomeComponent],
 })

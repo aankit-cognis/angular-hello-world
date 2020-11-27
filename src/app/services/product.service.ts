@@ -17,46 +17,26 @@ export class ProductService {
   ) {}
 
   getProducts(): Observable<IProduct[]> {
-    return this.http
-      .get<IProduct[]>(`${this._baseUrl}/open/products`)
-      .pipe(catchError(this.handleError));
+    return this.http.get<IProduct[]>(`${this._baseUrl}/products`);
   }
   getProduct(id: number): Observable<IProduct> {
-    return this.http
-      .get<IProduct>(`${this._baseUrl}/open/products/${id}`)
-      .pipe(catchError(this.handleError));
+    return this.http.get<IProduct>(`${this._baseUrl}/products/${id}`);
   }
   changeStatus(id: number, status: string): Observable<IProduct> {
     if (status === "activate") {
-      return this.http
-        .post<IProduct>(`${this._baseUrl}/open/products/${id}/reactivate`, null)
-        .pipe(catchError(this.handleError));
+      return this.http.post<IProduct>(
+        `${this._baseUrl}/products/${id}/reactivate`,
+        null
+      );
     } else {
-      return this.http
-        .post<IProduct>(`${this._baseUrl}/open/products/${id}/deactivate`, null)
-        .pipe(catchError(this.handleError));
+      return this.http.post<IProduct>(
+        `${this._baseUrl}/products/${id}/deactivate`,
+        null
+      );
     }
   }
 
   deleteProduct(id: number): Observable<IProduct> {
-    return this.http
-      .delete<IProduct>(`${this._baseUrl}/open/products/${id}`)
-      .pipe(catchError(this.handleError));
-  }
-
-  private handleError(errorResponse: HttpErrorResponse) {
-    //This can be a client side error.
-
-    if (errorResponse.error instanceof ErrorEvent) {
-      console.error("Client Side error !", errorResponse.error);
-    } else {
-      console.error("Server Side error !", errorResponse.error);
-    }
-
-    //Server side error.
-    //400
-    //500
-
-    return throwError("Sorry An error occured!");
+    return this.http.delete<IProduct>(`${this._baseUrl}/products/${id}`);
   }
 }
