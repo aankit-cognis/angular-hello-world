@@ -21,6 +21,6 @@ export class IsLoggedinUserService implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return this.authService.isUserLoggedIn();
+    return this.authService.getLoggedInUserData() !== null;
   }
 }

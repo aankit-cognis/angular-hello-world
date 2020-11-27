@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewChecked, Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { IUserToken } from "src/app/models/user-toke.interface";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -6,11 +8,19 @@ import { AuthService } from "src/app/services/auth.service";
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.scss"],
 })
-export class NavbarComponent implements OnInit {
-  isLoggedInUser: boolean;
-  constructor(private authServicec: AuthService) {}
+export class NavbarComponent implements OnInit, AfterViewChecked {
+  loggedInUser: IUserToken;
+  constructor(private authServicec: AuthService, private router: Router) {}
+  ngAfterViewChecked(): void {
+    this.loggedInUser = this.authServicec.getLoggedInUserData();
+  }
 
   ngOnInit() {
-    this.isLoggedInUser = this.authServicec.isUserLoggedIn();
+    this.loggedInUser = this.authServicec.getLoggedInUserData();
+  }
+
+  logout() {
+    this.authServicec.doLogout();
+    this.router.navigate(["/navigate"]);
   }
 }

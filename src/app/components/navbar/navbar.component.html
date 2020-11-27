@@ -16,16 +16,16 @@
     </li>
   </ul>
 
-  <ul class="navbar-nav" *ngIf="isLoggedInUser">
+  <ul class="navbar-nav" *ngIf="loggedInUser">
     <li class="nav-item">
-      <a class="nav-link" href="#"> Hello Swagat </a>
+      <a class="nav-link" href="#"> Hello {{loggedInUser.userName}} </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#"> LogOut </a>
+      <a class="nav-link" href="#" (click)="logout()"> LogOut </a>
     </li>
 
   </ul>
-  <ul class="navbar-nav" *ngIf="!isLoggedInUser">
+  <ul class="navbar-nav" *ngIf="!loggedInUser">
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['/register']" [routerLinkActive]="['active']">Register</a>
     </li>
