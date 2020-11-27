@@ -20,7 +20,6 @@ import { SharedModule } from "src/app/shared.module";
   ],
   imports: [
     CommonModule,
-    FormsModule,
     RouterModule.forChild([
       {
         path: "",

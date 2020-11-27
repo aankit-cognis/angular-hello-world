@@ -20,6 +20,7 @@ import { AuthService } from "./services/auth.service";
 import { IsLoggedinUserService } from "./services/is-loggedin-user.service";
 import { ProductModule } from "./modules/product/product.module";
 import { EmployeesModule } from "./modules/employees/employees.module";
+import { SharedModule } from "./shared.module";
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { EmployeesModule } from "./modules/employees/employees.module";
     ]),
     // ProductModule,
     // EmployeesModule,
+    SharedModule,
   ],
   providers: [
     UpperCasePipe,

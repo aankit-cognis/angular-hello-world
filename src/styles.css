@@ -14,3 +14,6 @@
   display: flex;
   flex: 1 1 auto;
 }
+.form-error-element {
+  border: 2px solid red;
+}
