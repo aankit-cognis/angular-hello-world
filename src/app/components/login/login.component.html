@@ -1,1 +1,27 @@
-<h1>Login Here</h1>
+<form class="mt-3" #form="ngForm" (ngSubmit)="submitForm(form)">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="emailAddress" placeholder="Enter email"
+      required [(ngModel)]="data.emailAddress" #email="ngModel"
+      [class.form-error-element]="email.invalid && form.submitted" email>
+
+    <div class="text-danger" *ngIf="email.invalid && form.submitted && email.errors.required"
+      [hidden]="email.valid || email.untouched">
+      Email is required</div>
+
+    <div class="text-danger" *ngIf="email.invalid && form.submitted && email.errors.email"
+      [hidden]="email.valid || email.untouched">
+      Please type in a valid email</div>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="data.password" id="exampleInputPassword1"
+      placeholder="Password" #password="ngModel" [class.form-error-element]="password.invalid && form.submitted"
+      required>
+
+    <div class="text-danger" *ngIf="password.invalid && form.submitted && password.errors.required"
+      [hidden]="email.valid || email.untouched">
+      Password is required</div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
