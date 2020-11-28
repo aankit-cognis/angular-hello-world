@@ -29,11 +29,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group({
       fullName: [
-        "Rahul",
+        "",
         [Validators.required, Validators.minLength(4), Validators.maxLength(8)],
       ],
       emailAddress: ["", [Validators.required, Validators.email]],
       isSubscribe: false,
+      phoneNumber: "",
+      notificationMedium: "email",
     });
 
     // this.registerForm = new FormGroup({
@@ -58,5 +60,19 @@ export class RegisterComponent implements OnInit {
       fullName: datafromservice.fullName,
       emailAddress: datafromservice.emailAddress,
     });
+  }
+
+  notifyUser(notifyBy: string) {
+    console.log("I want to opt in via " + notifyBy);
+    let phoneControl = this.registerForm.get("phoneNumber");
+    console.log("phoneControl", phoneControl);
+
+    if (notifyBy === "phone") {
+      phoneControl.setValidators(Validators.required);
+    } else {
+      phoneControl.clearValidators();
+    }
+
+    phoneControl.updateValueAndValidity();
   }
 }
