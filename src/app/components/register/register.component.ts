@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, NgForm } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from "@angular/forms";
 import { IRegister } from "src/app/models/register.interface";
 
 @Component({
@@ -18,14 +24,29 @@ export class RegisterComponent implements OnInit {
   };
   registerForm: FormGroup;
 
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      fullName: new FormControl(),
-      emailAddress: new FormControl(),
-      isSubscribe: new FormControl(true),
+    this.registerForm = this.fb.group({
+      fullName: [
+        this.data.fullName,
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(10),
+        ],
+      ],
+      emailAddress: ["", [Validators.required, Validators.email]],
+      isSubscribe: this.data.isSubscribe,
+      phoneNumber: "",
+      notification: "email",
     });
+
+    // this.registerForm = new FormGroup({
+    //   fullName: new FormControl(),
+    //   emailAddress: new FormControl(),
+    //   isSubscribe: new FormControl(true),
+    // });
   }
 
   populateTestData() {
@@ -43,4 +64,6 @@ export class RegisterComponent implements OnInit {
   submitForm() {
     console.log("Form SUbmitted ", this.registerForm);
   }
+
+  updateNotification(notifyVia: string) {}
 }
