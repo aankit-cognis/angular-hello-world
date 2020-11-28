@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, NgForm } from "@angular/forms";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  NgForm,
+  Validators,
+} from "@angular/forms";
 import { IRegister } from "src/app/models/register.interface";
 
 @Component({
@@ -18,14 +24,23 @@ export class RegisterComponent implements OnInit {
   };
 
   registerForm: FormGroup;
-  constructor() {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      fullName: new FormControl(),
-      emailAddress: new FormControl(),
-      isSubscribe: new FormControl(false),
+    this.registerForm = this.fb.group({
+      fullName: [
+        "Rahul",
+        [Validators.required, Validators.minLength(4), Validators.maxLength(8)],
+      ],
+      emailAddress: ["", [Validators.required, Validators.email]],
+      isSubscribe: false,
     });
+
+    // this.registerForm = new FormGroup({
+    //   fullName: new FormControl(),
+    //   emailAddress: new FormControl(),
+    //   isSubscribe: new FormControl(false),
+    // });
   }
   submitForm() {
     console.log("Form SUbmitted ", this.registerForm);
@@ -35,7 +50,7 @@ export class RegisterComponent implements OnInit {
     //API Call
     let datafromservice = {
       fullName: "Swagat",
-      emailAddress: "swagat@gmail.com",
+      emailAddress: "swaga32t@gmail.com",
       is_Subscribed: true,
     };
     console.log("Fetching Data");
