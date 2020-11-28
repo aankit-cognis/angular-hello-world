@@ -14,6 +14,6 @@
   display: flex;
   flex: 1 1 auto;
 }
-.form-error-element {
+.ng-invalid:not(form).ng-touched {
   border: 2px solid red;
 }
