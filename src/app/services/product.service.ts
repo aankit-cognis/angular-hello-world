@@ -6,11 +6,13 @@ import { IProduct } from "../models/product.interface";
 import { UtilityService } from "./utility.service";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { AddProduct } from "../models/add-product";
 @Injectable()
 export class ProductService {
   // private static _instance: ProductService;
   lastDeletedProduct: string;
   private readonly _baseUrl: string = "http://testapi.techriff.in/api";
+  // private readonly _baseUrl: string = "https://localhost:44316/api";
   constructor(
     private utilityService: UtilityService,
     private http: HttpClient
@@ -38,5 +40,9 @@ export class ProductService {
 
   deleteProduct(id: number): Observable<IProduct> {
     return this.http.delete<IProduct>(`${this._baseUrl}/products/${id}`);
+  }
+
+  createNewProduct(product: AddProduct): Observable<IProduct> {
+    return this.http.post<IProduct>(`${this._baseUrl}/products`, product);
   }
 }

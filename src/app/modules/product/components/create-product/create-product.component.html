@@ -1,0 +1,72 @@
+<form [formGroup]="createProduct" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label for="">Name</label>
+    <input type="text" class="form-control" formControlName="productName" placeholder="Product Name">
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('productName')?.valid && createProduct?.get('productName')?.touched && createProduct?.get('productName')?.errors?.required">
+      Product name is required</div>
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('productName')?.valid && createProduct?.get('productName')?.touched && createProduct?.get('productName')?.errors?.minlength">
+      Name should be of at least 4 characters long</div>
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('productName')?.valid && createProduct?.get('productName')?.touched && createProduct?.get('productName')?.errors?.maxlength">
+      Max 128 chanracters long</div>
+  </div>
+  <div class="form-group">
+    <label for="">Description</label>
+    <textarea class="form-control" name="" id="" rows="3" formControlName="description"
+      placeholder="Description"></textarea>
+
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('description')?.valid && createProduct?.get('description')?.touched && createProduct?.get('description')?.errors?.required">
+      Desc is required</div>
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('description')?.valid && createProduct?.get('description')?.touched && createProduct?.get('description')?.errors?.minlength">
+      Name should be of at least 10 characters long</div>
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('description')?.valid && createProduct?.get('description')?.touched && createProduct?.get('description')?.errors?.maxlength">
+      Max 128 chanracters long</div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="">Price</label>
+    <input type="number" class="form-control" formControlName="price" placeholder="00.00">
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('price')?.valid && createProduct?.get('price')?.touched && createProduct?.get('price')?.errors?.required">
+      Price is required</div>
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('price')?.valid && createProduct?.get('price')?.touched && createProduct?.get('price')?.errors?.min">
+      Should be less tha zero</div>
+  </div>
+  <div class="form-group">
+    <label for="">Released Date</label>
+    <input type="date" class="form-control" formControlName="releaseDate" placeholder="mm-dd-yyyy">
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('releaseDate')?.valid && createProduct?.get('releaseDate')?.touched && createProduct?.get('releaseDate')?.errors?.required">
+      Price is required</div>
+  </div>
+  <div class="form-group">
+    <label for="">Rating</label>
+    <input type="number" class="form-control" formControlName="rating" placeholder="00.00">
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('rating')?.valid && createProduct?.get('rating')?.touched && createProduct?.get('rating')?.errors?.required">
+      Rating is required</div>
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('rating')?.valid && createProduct?.get('rating')?.touched && createProduct?.get('rating')?.errors?.min">
+      Should be less tha zero</div>
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('rating')?.valid && createProduct?.get('rating')?.touched && createProduct?.get('rating')?.errors?.max">
+      Should be lemoress than Five</div>
+  </div>
+
+  <div class="form-group">
+    <label for="">Image Link</label>
+    <input type="text" class="form-control" formControlName="imageUrl" placeholder="Product Name">
+    <div class="text-danger"
+      *ngIf="!createProduct?.get('imageUrl')?.valid && createProduct?.get('imageUrl')?.touched && createProduct?.get('imageUrl')?.errors?.required">
+      Imageurl is required</div>
+
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>

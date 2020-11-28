@@ -8,6 +8,9 @@
   <div class="col-md-3">
     <button type="button" class="btn btn-warning float-right" (click)="toggleImages()">{{showImages ? 'Hide' : 'Show'}}
       Images</button>
+    <button type="button" class="btn btn-default btn-primary float-right mr-2"
+      [routerLink]="['/products/create']">Create
+      New</button>
   </div>
 </div>
 <div class="row">

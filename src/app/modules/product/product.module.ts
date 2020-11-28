@@ -11,12 +11,14 @@ import { IsLoggedinUserService } from "src/app/services/is-loggedin-user.service
 import { CanActivateProductDetailsService } from "src/app/services/can-activate-product-details.service";
 import { ProductDetailResolverService } from "src/app/resolvers/product-detail-resolver.service";
 import { SharedModule } from "src/app/shared.module";
+import { CreateProductComponent } from "./components/create-product/create-product.component";
 
 @NgModule({
   declarations: [
     ProductListComponent,
     ProductComponent,
     ProductDetailsComponent,
+    CreateProductComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,10 @@ import { SharedModule } from "src/app/shared.module";
         path: "",
         component: ProductListComponent,
         canActivate: [IsLoggedinUserService],
+      },
+      {
+        path: "create",
+        component: CreateProductComponent,
       },
       {
         path: ":id",
