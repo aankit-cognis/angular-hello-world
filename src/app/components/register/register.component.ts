@@ -65,5 +65,17 @@ export class RegisterComponent implements OnInit {
     console.log("Form SUbmitted ", this.registerForm);
   }
 
-  updateNotification(notifyVia: string) {}
+  updateNotification(notifyBy: string) {
+    console.log("I want to opt in via " + notifyBy);
+    let phoneControl = this.registerForm.get("phoneNumber");
+    console.log("phoneControl", phoneControl);
+
+    if (notifyBy === "phone") {
+      phoneControl.setValidators(Validators.required);
+    } else {
+      phoneControl.clearValidators();
+    }
+
+    phoneControl.updateValueAndValidity();
+  }
 }

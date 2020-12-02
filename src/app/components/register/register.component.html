@@ -27,13 +27,15 @@
   </div>
   <div class="form-check">
     <label class="form-check-label">
-      <input type="radio" class="form-check-input" formControlName="notification" value="email">
+      <input type="radio" class="form-check-input" formControlName="notification" value="email"
+        (click)="updateNotification('email')">
       Email
     </label>
   </div>
   <div class="form-check">
     <label class="form-check-label">
-      <input type="radio" class="form-check-input" formControlName="notification" value="phone">
+      <input type="radio" class="form-check-input" formControlName="notification" value="phone"
+        (click)="updateNotification('phone')">
       Phone
     </label>
   </div>
