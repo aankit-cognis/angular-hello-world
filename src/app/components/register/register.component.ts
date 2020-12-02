@@ -6,23 +6,26 @@ import {
   FormControl,
   FormGroup,
   NgForm,
+  ValidatorFn,
   Validators,
 } from "@angular/forms";
 import { IRegister } from "src/app/models/register.interface";
 
-function rangeValidator(
-  control: AbstractControl
-): { [key: string]: boolean } | null {
-  console.log("Control", control);
+function rangeValidator(min: number, max: number): ValidatorFn {
+  return function (
+    control: AbstractControl
+  ): { [key: string]: boolean } | null {
+    console.log("Control", control);
 
-  if (
-    (control !== null && isNaN(control.value)) ||
-    control.value < 1 ||
-    control.value > 5
-  ) {
-    return { range: true };
-  }
-  return null;
+    if (
+      (control !== null && isNaN(control.value)) ||
+      control.value < 1 ||
+      control.value > 5
+    ) {
+      return { range: true };
+    }
+    return null;
+  };
 }
 
 @Component({
@@ -57,7 +60,7 @@ export class RegisterComponent implements OnInit {
       isSubscribe: this.data.isSubscribe,
       phoneNumber: "",
       notification: "email",
-      rating: [null, [rangeValidator]],
+      rating: [null, [rangeValidator(1, 5)]],
     });
 
     // this.registerForm = new FormGroup({
