@@ -52,6 +52,21 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="isSubscribe">
     <label class="form-check-label" for="exampleCheck1">Subscribe</label>
   </div>
+  <div class="form-group">
+    <label for="rating">Rating</label>
+    <input type="number" class="form-control" id="rating" placeholder="Your rating" formControlName="rating">
+    <div class="text-danger"
+      *ngIf="!registerForm?.get('rating')?.valid && registerForm?.get('rating')?.touched && registerForm?.get('rating')?.errors.range">
+      You have to provide a value between 1-5</div>
+    <h6 class="text-info">{{registerForm?.get('rating')?.errors | json}}</h6>
+    <!--
+    <div class="text-danger"
+      *ngIf="!registerForm?.get('fullName')?.valid && registerForm?.get('fullName')?.touched && registerForm?.get('fullName')?.errors?.minlength">
+      Min 4 chanracters long</div>
+    <div class="text-danger"
+      *ngIf="!registerForm?.get('fullName')?.valid && registerForm?.get('fullName')?.touched && registerForm?.get('fullName')?.errors?.maxlength">
+      Max 8 chanracters long</div> -->
+  </div>
   <button type="submit" class="btn btn-primary mr-3"
     [title]="!registerForm.valid ? 'Fill up all the data' : 'Save the data'">Submit</button>
   <button type="button" class="btn btn-outline-primary" (click)="fillWithDummyData()">Fetch Test Data</button>
@@ -66,3 +81,4 @@
 <br>
 <br>
 <br>
+
