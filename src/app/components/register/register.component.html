@@ -1,25 +1,48 @@
 <form class="mt-3" (ngSubmit)="submitForm()" [formGroup]="registerForm">
+
   <div class="form-group">
     <label for="inputName">Name</label>
-    <input type="text" class="form-control" id="inputName" placeholder="Your fullname" formControlName="fullName">
+    <input type="text" class="form-control" id="inputName" placeholder="Your fullname" formControlName="fullName"
+      [ngClass]="{'error-message':!registerForm.get('fullName').valid && registerForm.get('fullName').touched}">
     <div class="text-danger" *ngIf="!registerForm.get('fullName').valid && registerForm.get('fullName').touched">
       Please enter a valida name with length between 4-10</div>
-    {{registerForm.get('fullName').errors | json}}
   </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
-      formControlName="emailAddress">
-    <div class="text-danger" *ngIf="!registerForm.get('emailAddress').valid
-                                  && registerForm.get('emailAddress').touched
-                                  && registerForm.get('emailAddress').errors?.required">
-      Email is required</div>
-    <div class="text-danger" *ngIf="!registerForm.get('emailAddress').valid
-              && registerForm.get('emailAddress').touched
-              && registerForm.get('emailAddress').errors?.email">
-      Not a valid email address</div>
-    {{registerForm.get('emailAddress').errors | json}}
+
+
+  <div formGroupName="emailGroup">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email"
+        formControlName="emailAddress" [ngClass]="{'error-message': registerForm.get('emailGroup').errors ||
+        (!registerForm.get('emailGroup.emailAddress').valid && registerForm.get('emailGroup.emailAddress').touched &&
+        registerForm.get('emailGroup.emailAddress').errors?.required)}">
+
+      <div class="text-danger" *ngIf="!registerForm.get('emailGroup.emailAddress').valid
+                                    && registerForm.get('emailGroup.emailAddress').touched
+                                    && registerForm.get('emailGroup.emailAddress').errors?.required">
+        Email is required</div>
+      <div class="text-danger" *ngIf="!registerForm.get('emailGroup.emailAddress').valid
+                && registerForm.get('emailGroup.emailAddress').touched
+                && registerForm.get('emailGroup.emailAddress').errors?.email">
+        Not a valid email address</div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmEmailAddress">Confirm Email address</label>
+      <input type="email" class="form-control" id="confirmEmailAddress" placeholder="Confirm email"
+        formControlName="confirmEmailAddress"
+        [ngClass]="{'error-message':(!registerForm.get('emailGroup.confirmEmailAddress').valid
+        && registerForm.get('emailGroup.confirmEmailAddress').touched
+        && registerForm.get('emailGroup.confirmEmailAddress').errors?.required) || registerForm.get('emailGroup').errors}">
+      <div class="text-danger" *ngIf="!registerForm.get('emailGroup.confirmEmailAddress').valid
+                                    && registerForm.get('emailGroup.confirmEmailAddress').touched
+                                    && registerForm.get('emailGroup.confirmEmailAddress').errors?.required">
+        Confirm Email is required</div>
+
+    </div>
+    {{registerForm.get("emailGroup").errors | json}}
   </div>
+
 
   <div class="form-group">
     <label for="phoneNumber">Phone Number</label>
@@ -32,6 +55,7 @@
       Email
     </label>
   </div>
+
   <div class="form-check">
     <label class="form-check-label">
       <input type="radio" class="form-check-input" formControlName="notification" value="phone"
@@ -39,6 +63,8 @@
       Phone
     </label>
   </div>
+
+
   <div class=" form-check form-group">
     <input type="checkbox" class="form-check-input" id="exampleCheck1" name="isSubscribe" formControlName="isSubscribe">
     <label class="form-check-label" for="exampleCheck1">Subscribe</label>
@@ -50,8 +76,9 @@
     <div class="text-danger"
       *ngIf="!registerForm.get('rating').valid && registerForm.get('rating').touched && registerForm.get('rating').errors.range">
       Please enter a value between 1 to 5</div>
-    {{registerForm.get('rating').errors | json}}
   </div>
+
+
   <button type="submit" class="btn btn-primary mr-2"
     [title]="!registerForm.valid ? 'Make sure you fill in all information' : 'Submit the form'">Submit</button>
 

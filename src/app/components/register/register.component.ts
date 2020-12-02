@@ -28,6 +28,16 @@ function rangeValidator(min: number, max: number): ValidatorFn {
   };
 }
 
+function match(control: AbstractControl): { [key: string]: boolean } | null {
+  let email = control.get("emailAddress");
+  let confirmEmail = control.get("confirmEmailAddress");
+  console.log("Control inside Mathc", email, confirmEmail);
+
+  if (email.value !== confirmEmail.value) {
+    return { match: true };
+  }
+  return null;
+}
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
@@ -56,7 +66,13 @@ export class RegisterComponent implements OnInit {
           Validators.maxLength(10),
         ],
       ],
-      emailAddress: ["", [Validators.required, Validators.email]],
+      emailGroup: this.fb.group(
+        {
+          emailAddress: ["", [Validators.required, Validators.email]],
+          confirmEmailAddress: ["", [Validators.required]],
+        },
+        { validators: match }
+      ),
       isSubscribe: this.data.isSubscribe,
       phoneNumber: "",
       notification: "email",
