@@ -22,7 +22,11 @@ import { ProductModule } from "./modules/product/product.module";
 import { EmployeesModule } from "./modules/employees/employees.module";
 import { SharedModule } from "./shared.module";
 import { WiproHttpInterceptor } from "./services/http-interceptor.service";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+import { MatButtonModule } from "@angular/material/button";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -72,6 +76,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // EmployeesModule,
     SharedModule,
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
   ],
   providers: [
     UpperCasePipe,
