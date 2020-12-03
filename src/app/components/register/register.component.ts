@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import {
   AbstractControl,
   FormBuilder,
@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit {
   };
 
   registerForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.registerForm = this.fb.group({
@@ -99,6 +99,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm
       .get("addressArray")
       ["controls"].push(this.createAddressGroup());
+    this.cd.detectChanges();
   }
   createAddressGroup(): FormGroup {
     return this.fb.group({
