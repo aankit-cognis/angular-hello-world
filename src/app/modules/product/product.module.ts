@@ -12,6 +12,7 @@ import { CanActivateProductDetailsService } from "src/app/services/can-activate-
 import { ProductDetailResolverService } from "src/app/resolvers/product-detail-resolver.service";
 import { SharedModule } from "src/app/shared.module";
 import { CreateProductComponent } from "./components/create-product/create-product.component";
+import { MaterialModule } from "src/app/material.modul";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CreateProductComponent } from "./components/create-product/create-produ
       },
     ]),
     SharedModule,
+    MaterialModule,
   ],
 })
 export class ProductModule {}

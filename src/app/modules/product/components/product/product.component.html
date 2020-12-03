@@ -1,4 +1,29 @@
-<div class="card text-left">
+<mat-card class="example-card">
+  <img mat-card-image *ngIf="canShowImage" [src]="productToBeRendered.imageUrl"
+    [title]="productToBeRendered.productName">
+  <mat-card-content>
+    <h4>{{productToBeRendered.productName | uppercase}}</h4>
+    <p>Description : {{productToBeRendered.description | nullOrEmpty :  'Not Available' | uppercase}}
+    </p>
+    <p [ngStyle]="getStyles (productToBeRendered)">Price :
+      {{productToBeRendered.price | currency : 'INR':'Rs ' : '3.2-2' }}</p>
+    <p>Released On : {{productToBeRendered.releaseDate | date : 'fullDate'}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary"
+      (click)="navigateToDetails(productToBeRendered.productId)">Details</button>
+    <button mat-raised-button color="accent" [disabled]="!productToBeRendered.isActive">Buy
+      Now</button>
+    <button mat-raised-button color="warn" [disabled]="!productToBeRendered.isActive"
+      (click)="deleteProduct(productToBeRendered.productId)">Delete</button>
+    <button mat-raised-button *ngIf="!productToBeRendered.isActive"
+      (click)="changeStatus(productToBeRendered.productId,'activate')">Activate</button>
+    <button mat-raised-button *ngIf="productToBeRendered.isActive"
+      (click)="changeStatus(productToBeRendered.productId,'deactivate')">Deactivate</button>
+  </mat-card-actions>
+</mat-card>
+
+<!-- <div class="card text-left">
   <img class="card-img-top" *ngIf="canShowImage" [src]="productToBeRendered.imageUrl"
     [title]="productToBeRendered.productName" [style.padding.px]="'5'" alt="">
   <div class="card-body">
@@ -20,4 +45,5 @@
     <button type="button" class="btn btn-info mr-1 btn-sm" *ngIf="productToBeRendered.isActive"
       (click)="changeStatus(productToBeRendered.productId,'deactivate')">Deactivate</button>
   </div>
-</div>
+</div> -->
+
