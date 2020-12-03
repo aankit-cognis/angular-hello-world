@@ -13,17 +13,33 @@
       *ngIf="!registerForm?.get('fullName')?.valid && registerForm?.get('fullName')?.touched && registerForm?.get('fullName')?.errors?.maxlength">
       Max 8 chanracters long</div>
   </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email (required)"
-      formControlName="emailAddress">
-    <div class="text-danger"
-      *ngIf="!registerForm?.get('emailAddress')?.valid && registerForm?.get('emailAddress')?.touched && registerForm?.get('emailAddress')?.errors?.required">
-      Email is required</div>
-    <div class="text-danger"
-      *ngIf="!registerForm?.get('emailAddress')?.valid && registerForm?.get('emailAddress')?.touched && registerForm?.get('emailAddress')?.errors?.email">
-      Invalid Email</div>
+
+  <div formGroupName="emailGroup">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email (required)"
+        formControlName="emailAddress" [ngClass]="{'error-class':registerForm.get('emailGroup').errors}">
+      <div class="text-danger"
+        *ngIf="!registerForm?.get('emailAddress')?.valid && registerForm?.get('emailAddress')?.touched && registerForm?.get('emailAddress')?.errors?.required">
+        Email is required</div>
+      <div class="text-danger"
+        *ngIf="!registerForm?.get('emailAddress')?.valid && registerForm?.get('emailAddress')?.touched && registerForm?.get('emailAddress')?.errors?.email">
+        Invalid Email</div>
+    </div>
+    <div class="form-group">
+      <label for="confirmEmail">Confirm Email</label>
+      <input type="text" class="form-control" id="confirmEmail" placeholder="Confirm Your Email"
+        formControlName="confirmEmail" [ngClass]="{'error-class':registerForm.get('emailGroup').errors}">
+      <div class="text-danger"
+        *ngIf="!registerForm?.get('confirmEmail')?.valid && registerForm?.get('confirmEmail')?.touched && registerForm?.get('confirmEmail')?.errors?.required">
+        Confirm email is required</div>
+
+      <div class="text-danger"
+        *ngIf="!registerForm?.get('emailGroup')?.valid && registerForm?.get('emailGroup')?.touched && registerForm?.get('emailGroup')?.errors?.matchEmail">
+        Email and Confirm Email should match</div>
+    </div>
   </div>
+
 
   <div class="form-group">
     <label for="phoneNumber">Phone</label>

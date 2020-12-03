@@ -8,6 +8,7 @@ import {
   ValidatorFn,
   Validators,
 } from "@angular/forms";
+import { NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 import { IRegister } from "src/app/models/register.interface";
 
 function rangeValidator(min: number, max: number): ValidatorFn {
@@ -22,6 +23,18 @@ function rangeValidator(min: number, max: number): ValidatorFn {
     //If validation rule passes, we return null
     return null;
   };
+}
+
+function matchEmail(c: AbstractControl): { [key: string]: boolean } | null {
+  console.log("Inside Match EMail", c);
+  let email = c.get("emailAddress");
+  let cemail = c.get("confirmEmail");
+
+  if (email.value == cemail.value) {
+    return null;
+  }
+
+  return { matchEmail: true };
 }
 
 // function rangeValidator(
@@ -62,7 +75,13 @@ export class RegisterComponent implements OnInit {
         "",
         [Validators.required, Validators.minLength(4), Validators.maxLength(8)],
       ],
-      emailAddress: ["", [Validators.required, Validators.email]],
+      emailGroup: this.fb.group(
+        {
+          emailAddress: ["", [Validators.required, Validators.email]],
+          confirmEmail: ["", [Validators.required]],
+        },
+        { validators: matchEmail }
+      ),
       isSubscribe: false,
       phoneNumber: "",
       notificationMedium: "email",

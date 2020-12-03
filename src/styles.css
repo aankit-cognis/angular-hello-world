@@ -17,6 +17,10 @@
 .form-error-element {
   border: 2px solid red;
 }
-.ng-invalid:not(form).ng-touched {
+.ng-invalid:not(form):not([formgroupname]).ng-touched {
+  border: 2px solid red;
+}
+
+.error-class {
   border: 2px solid red;
 }
