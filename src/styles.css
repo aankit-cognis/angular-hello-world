@@ -17,7 +17,7 @@
 .form-error-element {
   border: 2px solid red;
 }
-.ng-invalid:not(form):not([formgroupname]).ng-touched {
+.ng-invalid:not(form):not([formgroupname]):not([formarrayname]):not(:first-child).ng-touched {
   border: 2px solid red;
 }
 

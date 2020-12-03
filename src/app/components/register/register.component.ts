@@ -82,30 +82,32 @@ export class RegisterComponent implements OnInit {
         },
         { validators: matchEmail }
       ),
-      isSubscribe: false,
+      isSubscribe: true,
       phoneNumber: "",
       notificationMedium: "email",
       rating: [null, [rangeValidator(1, 5)]],
+      addressArray: this.fb.array([this.createAddressGroup()]),
     });
-
-    // this.registerForm = new FormGroup({
-    //   fullName: new FormControl(),
-    //   emailAddress: new FormControl(),
-    //   isSubscribe: new FormControl(false),
-    // });
-    // let phoneControl = this.registerForm.get("phoneNumber");
-    // phoneControl.valueChanges.subscribe((data) => {
-    //   console.log("Inside Value Changes ", data);
-    // });
-
-    // phoneControl.statusChanges.subscribe((data) => {
-    //   console.log("Inside statusChanges ", data);
-    // });
 
     let notifyControl = this.registerForm.get("notificationMedium");
     notifyControl.valueChanges.subscribe((data) => {
       console.log(data);
       this.notifyUser(data);
+    });
+  }
+  addAddrsss() {
+    this.registerForm
+      .get("addressArray")
+      ["controls"].push(this.createAddressGroup());
+  }
+  createAddressGroup(): FormGroup {
+    return this.fb.group({
+      addressType: "home",
+      address1: ["", [Validators.required]],
+      address2: "",
+      city: "",
+      state: "",
+      zip: "",
     });
   }
   submitForm() {
