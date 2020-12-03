@@ -22,6 +22,7 @@ import { ProductModule } from "./modules/product/product.module";
 import { EmployeesModule } from "./modules/employees/employees.module";
 import { SharedModule } from "./shared.module";
 import { WiproHttpInterceptor } from "./services/http-interceptor.service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { WiproHttpInterceptor } from "./services/http-interceptor.service";
     // ProductModule,
     // EmployeesModule,
     SharedModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     UpperCasePipe,
