@@ -81,6 +81,12 @@ export class RegisterComponent implements OnInit {
       addressArray: this.fb.array([this.buildAddressGroup()]),
     });
 
+    let notifyControl = this.registerForm.get("notification");
+    notifyControl.valueChanges.subscribe((data) => {
+      console.log("valueChanges", data);
+      this.updateNotification(data);
+    });
+
     // this.registerForm = new FormGroup({
     //   fullName: new FormControl(),
     //   emailAddress: new FormControl(),
