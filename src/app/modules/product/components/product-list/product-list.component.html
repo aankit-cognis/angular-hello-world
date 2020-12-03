@@ -19,13 +19,21 @@
   </div>
 </div>
 <hr>
-<div class="row" *ngIf="products && products.length; else noBikes" (mousemove)="mouseEnterEvent()">
+<!-- <div class="row" *ngIf="products && products.length; else noBikes" (mousemove)="mouseEnterEvent()">
   <div class="col-md-4 mt-3" *ngFor="let product of products; let i = index;">
     <app-product [productToBeRendered]="product" [canShowImage]="showImages"
       (onProductDeleted)="onSuccessfullyDeleted($event)" (onProductStatusChanged)="onProductStatusChanged($event)">
     </app-product>
   </div>
-</div>
+</div> -->
+<mat-grid-list cols="4" rowHeight="3:5" *ngIf="products && products.length; else noBikes">
+  <mat-grid-tile *ngFor="let product of products; let i = index;" style="margin-right: 10px;">
+    <app-product [productToBeRendered]="product" [canShowImage]="showImages"
+      (onProductDeleted)="onSuccessfullyDeleted($event)" (onProductStatusChanged)="onProductStatusChanged($event)">
+    </app-product>
+  </mat-grid-tile>
+</mat-grid-list>
+
 <ng-template #noBikes>
   <div class="alert alert-warning" role="alert">
     <strong>OOps No Bikes are available</strong>
