@@ -8,6 +8,7 @@ import {
   NgForm,
   ValidatorFn,
   Validators,
+  FormArray,
 } from "@angular/forms";
 import { IRegister } from "src/app/models/register.interface";
 
@@ -49,7 +50,7 @@ export class RegisterComponent implements OnInit {
     emailAddress: "",
     fullName: "",
     gender: "",
-    isSubscribe: false,
+    isSubscribe: true,
     password: "",
   };
   registerForm: FormGroup;
@@ -77,6 +78,7 @@ export class RegisterComponent implements OnInit {
       phoneNumber: "",
       notification: "email",
       rating: [null, [rangeValidator(1, 5)]],
+      addressArray: this.fb.array([this.buildAddressGroup()]),
     });
 
     // this.registerForm = new FormGroup({
@@ -85,7 +87,21 @@ export class RegisterComponent implements OnInit {
     //   isSubscribe: new FormControl(true),
     // });
   }
-
+  addAddress() {
+    this.registerForm
+      .get("addressArray")
+      ["controls"].push(this.buildAddressGroup());
+  }
+  buildAddressGroup(): FormGroup {
+    return this.fb.group({
+      addressType: "home",
+      address1: ["", [Validators.required]],
+      address2: "",
+      state: "",
+      city: "",
+      zip: "",
+    });
+  }
   populateTestData() {
     // this.registerForm.setValue({
     //   fullName: "John Smith",

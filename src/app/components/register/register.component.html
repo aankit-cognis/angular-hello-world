@@ -40,7 +40,6 @@
         Confirm Email is required</div>
 
     </div>
-    {{registerForm.get("emailGroup").errors | json}}
   </div>
 
 
@@ -65,11 +64,6 @@
   </div>
 
 
-  <div class=" form-check form-group">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="isSubscribe" formControlName="isSubscribe">
-    <label class="form-check-label" for="exampleCheck1">Subscribe</label>
-  </div>
-
   <div class="form-group">
     <label for="rating">Rating</label>
     <input type="text" class="form-control" id="rating" placeholder="Your Rating" formControlName="rating">
@@ -78,7 +72,64 @@
       Please enter a value between 1 to 5</div>
   </div>
 
+  <div class=" form-check form-group">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="isSubscribe" formControlName="isSubscribe">
+    <label class="form-check-label" for="exampleCheck1">Subscribe</label>
+  </div>
 
+  <!-- Starting of Address Section -->
+  <div *ngIf="registerForm.get('isSubscribe').value">
+    <div formArrayName="addressArray" *ngFor="let add of (registerForm.get('addressArray'))['controls']; let i=index">
+      <div formGroupName="{{i}}">
+        <div class="form-check form-check-inline">
+          Address Type
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="addressType" formControlName="addressType" value="home">
+            Home
+          </label>
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="addressType" formControlName="addressType"
+              value="office">
+            Office
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="">Address Line 1</label>
+          <input type="text" class="form-control" placeholder="Address line 1" formControlName="address1"
+            [ngClass]="{}">
+        </div>
+
+        <div class="form-group">
+          <label for="">Address Line 2</label>
+          <input type="text" class="form-control" placeholder="Address line 2" formControlName="address2">
+        </div>
+
+        <div class="form-group form-row">
+          <div class="col-md-4">
+            <label for="">City</label>
+            <input type="text" class="form-control" placeholder="City" formControlName="city">
+          </div>
+          <div class="col-md-4">
+            <label for="">State</label>
+            <select class="form-control" formControlName="state">
+              <option value="">Select</option>
+              <option value="state1">State 1</option>
+              <option value="state2">State 2</option>
+              <option value="state3">State 3</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="">Zip</label>
+            <input type="text" class="form-control" placeholder="Zip" formControlName="zip">
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-outline-info mb-3" (click)="addAddress()"
+      [disabled]="!registerForm.get('addressArray').valid">Add new address</button>
+  </div>
+
+  <!-- End of Address Section -->
   <button type="submit" class="btn btn-primary mr-2"
     [title]="!registerForm.valid ? 'Make sure you fill in all information' : 'Submit the form'">Submit</button>
 
