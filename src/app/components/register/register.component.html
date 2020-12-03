@@ -36,13 +36,13 @@
   <div class="form-check">
     <label class="form-check-label">
       <input type="radio" class="form-check-input" value="phone" name="notificationMedium"
-        formControlName="notificationMedium" (click)="notifyUser('phone')">
+        formControlName="notificationMedium">
       Via Phone
     </label>
   </div>
   <div class="form-check">
     <label class="form-check-label">
-      <input type="radio" class="form-check-input" value="email" name="notificationMedium" (click)="notifyUser('email')"
+      <input type="radio" class="form-check-input" value="email" name="notificationMedium"
         formControlName="notificationMedium">
       Vai Email
     </label>
@@ -58,7 +58,6 @@
     <div class="text-danger"
       *ngIf="!registerForm?.get('rating')?.valid && registerForm?.get('rating')?.touched && registerForm?.get('rating')?.errors.range">
       You have to provide a value between 1-5</div>
-    <h6 class="text-info">{{registerForm?.get('rating')?.errors | json}}</h6>
     <!--
     <div class="text-danger"
       *ngIf="!registerForm?.get('fullName')?.valid && registerForm?.get('fullName')?.touched && registerForm?.get('fullName')?.errors?.minlength">
@@ -81,4 +80,3 @@
 <br>
 <br>
 <br>
-

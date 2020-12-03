@@ -74,6 +74,20 @@ export class RegisterComponent implements OnInit {
     //   emailAddress: new FormControl(),
     //   isSubscribe: new FormControl(false),
     // });
+    // let phoneControl = this.registerForm.get("phoneNumber");
+    // phoneControl.valueChanges.subscribe((data) => {
+    //   console.log("Inside Value Changes ", data);
+    // });
+
+    // phoneControl.statusChanges.subscribe((data) => {
+    //   console.log("Inside statusChanges ", data);
+    // });
+
+    let notifyControl = this.registerForm.get("notificationMedium");
+    notifyControl.valueChanges.subscribe((data) => {
+      console.log(data);
+      this.notifyUser(data);
+    });
   }
   submitForm() {
     console.log("Form SUbmitted ", this.registerForm);
