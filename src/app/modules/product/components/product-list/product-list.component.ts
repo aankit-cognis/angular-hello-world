@@ -1,5 +1,6 @@
 import { LowerCasePipe, UpperCasePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
+import { MatTableDataSource } from "@angular/material/table";
 import { IProduct } from "src/app/models/product.interface";
 import { IfNullOrEmpty } from "src/app/pipes/if-null-or-empty.pipe";
 import { ProductService } from "src/app/services/product.service";
@@ -7,8 +8,24 @@ import { ProductService } from "src/app/services/product.service";
 @Component({
   selector: "app-product-list",
   templateUrl: "product-list.component.html",
+  styles: [
+    `
+      table {
+        width: 100%;
+      }
+    `,
+  ],
 })
 export class ProductListComponent implements OnInit {
+  displayedColumns: string[] = [
+    "productName",
+    "description",
+    "releaseDate",
+    "rating",
+    "price",
+  ];
+  dataSource: MatTableDataSource<IProduct>;
+
   constructor(
     private upperCasePipe: UpperCasePipe,
     private lowerCasePipe: LowerCasePipe,
@@ -21,7 +38,7 @@ export class ProductListComponent implements OnInit {
     this.loadData();
   }
 
-  showImages: boolean = false;
+  showImages: boolean = true;
   pageTitle: string = "Hello World";
   searchText: string = "";
   products: IProduct[];
@@ -73,6 +90,7 @@ export class ProductListComponent implements OnInit {
       (data: IProduct[]) => {
         this.products = data;
         this.actualBikes = [...this.products];
+        this.dataSource = new MatTableDataSource<IProduct>(data);
       },
       (error: any) => {
         console.error("An error occured", error);
