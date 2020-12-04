@@ -26,13 +26,20 @@
     </app-product>
   </div>
 </div> -->
-<mat-grid-list cols="4" rowHeight="3:5" *ngIf="products && products.length; else noBikes">
-  <mat-grid-tile *ngFor="let product of products; let i = index;">
-    <app-product [productToBeRendered]="product" [canShowImage]="showImages"
-      (onProductDeleted)="onSuccessfullyDeleted($event)" (onProductStatusChanged)="onProductStatusChanged($event)">
-    </app-product>
-  </mat-grid-tile>
-</mat-grid-list>
+
+<mat-tab-group>
+  <mat-tab label="Grid View">
+    <mat-grid-list cols="4" rowHeight="3:5" *ngIf="products && products.length; else noBikes">
+      <mat-grid-tile *ngFor="let product of products; let i = index;">
+        <app-product [productToBeRendered]="product" [canShowImage]="showImages"
+          (onProductDeleted)="onSuccessfullyDeleted($event)" (onProductStatusChanged)="onProductStatusChanged($event)">
+        </app-product>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Table View"> Content 2 </mat-tab>
+</mat-tab-group>
+
 
 
 
@@ -41,4 +48,3 @@
     <strong>OOps No Bikes are available</strong>
   </div>
 </ng-template>
-
