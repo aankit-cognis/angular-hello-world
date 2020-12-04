@@ -26,52 +26,13 @@
     </app-product>
   </div>
 </div> -->
-<mat-tab-group>
-  <mat-tab label="Gid View">
-    <mat-grid-list cols="4" rowHeight="3:5" *ngIf="products && products.length; else noBikes">
-      <mat-grid-tile *ngFor="let product of products; let i = index;">
-        <app-product [productToBeRendered]="product" [canShowImage]="showImages"
-          (onProductDeleted)="onSuccessfullyDeleted($event)" (onProductStatusChanged)="onProductStatusChanged($event)">
-        </app-product>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-tab>
-  <mat-tab label="Table View">
-
-    <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
-
-        <ng-container matColumnDef="productName">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let product"> {{product.productName}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef> Description </th>
-          <td mat-cell *matCellDef="let product"> {{product.description}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="releaseDate">
-          <th mat-header-cell *matHeaderCellDef> Release Date </th>
-          <td mat-cell *matCellDef="let product"> {{product.releaseDate}} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="price">
-          <th mat-header-cell *matHeaderCellDef> Price </th>
-          <td mat-cell *matCellDef="let product"> {{product.price}} </td>
-        </ng-container>
-        <ng-container matColumnDef="rating">
-          <th mat-header-cell *matHeaderCellDef> Rating </th>
-          <td mat-cell *matCellDef="let product"> {{product.rating}} out of 5</td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20, 50]" showFirstLastButtons></mat-paginator>
-    </div>
-
-  </mat-tab>
-</mat-tab-group>
+<mat-grid-list cols="4" rowHeight="3:5" *ngIf="products && products.length; else noBikes">
+  <mat-grid-tile *ngFor="let product of products; let i = index;">
+    <app-product [productToBeRendered]="product" [canShowImage]="showImages"
+      (onProductDeleted)="onSuccessfullyDeleted($event)" (onProductStatusChanged)="onProductStatusChanged($event)">
+    </app-product>
+  </mat-grid-tile>
+</mat-grid-list>
 
 
 
@@ -80,3 +41,4 @@
     <strong>OOps No Bikes are available</strong>
   </div>
 </ng-template>
+
